@@ -1,0 +1,82 @@
+@import "../../const.scss";
+
+.navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 0.1em;
+  background-color: #1c3b68;
+  color: #f4f6f9;
+  vertical-align: middle;
+
+  .nav {
+    &__list {
+      display: flex;
+      list-style-type: none;
+      &__item {
+        margin-right: 0.5em;
+        &__button {
+          border: none;
+          background: none;
+          &__link {
+            color: #f4f6f9;
+            .p {
+              font-size: 0.9rem;
+              padding: 0.3em;
+            }
+          }
+        }
+        &__button:hover,
+        &__button:focus {
+          background: #26b9f1;
+          border-radius: 3px;
+        }
+        .active {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .message {
+    display: none;
+    margin-left: auto;
+    padding: 0.3em;
+  }
+}
+
+@include mq(420px) {
+  .navbar {
+    padding: 0.2em 9%;
+    .nav {
+      &__list {
+        &__item {
+          &__button {
+            &__link {
+              .p {
+                font-size: 1.1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mq(767px) {
+  .navbar {
+    .message {
+      display: block;
+    }
+  }
+}
+
+@include mq(928px) {
+  .navbar {
+    padding: 0.5em 18%;
+  }
+}

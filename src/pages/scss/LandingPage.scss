@@ -1,0 +1,52 @@
+@import "../../const.scss";
+
+.landingPage {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  .leftSide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    background-color: $clr-Bg;
+
+    &__insideBox {
+      width: 39em;
+      height: 42em;
+      box-shadow: $shadowBox;
+    }
+  }
+
+  .rightSide {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    background-color: $clr-secunderyBg;
+
+    &__insideBox {
+      width: 39em;
+      height: 42em;
+      background-image: url("../../images/LandingPage.webp");
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: cover;
+      box-shadow: $shadowBox_right;
+
+      &__shade {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(28, 59, 104, 0.6);
+
+        &__content {
+        }
+      }
+    }
+  }
+}
+
+// https://convertio.co/jpg-jp2/

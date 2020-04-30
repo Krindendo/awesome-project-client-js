@@ -1,0 +1,26 @@
+/* Variables - Root */
+
+$ff-primary: "Open Sans", sans-serif;
+
+$clr-primary: white;
+$clr-Bg: #f4f6f9;
+$clr-secunderyBg: #1c3b68;
+$clr-focus: rgb(255, 187, 0);
+
+$shadowBox: 0 0 50px 10px rgba(0, 0, 0, 0.1), 0 0 20px 5px rgba(0, 0, 0, 0.15),
+  0 0 2px 0px rgba(0, 0, 0, 0.2);
+
+$shadowBox_right: 5px 0px 50px 10px rgba(0, 0, 0, 0.1),
+  3px 0px 20px 1px rgba(0, 0, 0, 0.15), 1px 0px 0px 0px rgba(0, 0, 0, 0.2);
+
+/* Mixins  */
+
+@mixin mq($from) {
+  @media (min-width: $from) {
+    @content;
+  }
+}
+
+@mixin transition($time, $property: all, $easing: ease-out) {
+  transition: $property $time $easing;
+}
