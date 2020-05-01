@@ -9,8 +9,8 @@
   width: 100%;
   z-index: 2;
   padding: 0.1em;
-  background-color: #1c3b68;
-  color: #f4f6f9;
+  background-color: $clr-secunderyBg;
+  color: $clr-Bg;
   vertical-align: middle;
 
   .nav {
@@ -18,12 +18,12 @@
       display: flex;
       list-style-type: none;
       &__item {
-        margin-right: 0.5em;
+        margin-right: 0.1em;
         &__button {
           border: none;
           background: none;
           &__link {
-            color: #f4f6f9;
+            color: $clr-Bg;
             .p {
               font-size: 0.9rem;
               padding: 0.3em;
@@ -31,12 +31,13 @@
           }
         }
         &__button:hover,
-        &__button:focus {
-          background: #26b9f1;
-          border-radius: 3px;
-        }
+        &__button:focus,
         .active {
-          font-weight: 700;
+          background: $clr-primary;
+          border-radius: 3px;
+          .nav__list__item__button__link {
+            color: $clr-secunderyBg;
+          }
         }
       }
     }
@@ -44,7 +45,7 @@
   .message {
     display: none;
     margin-left: auto;
-    padding: 0.3em;
+    padding-top: 0.5em;
   }
 }
 

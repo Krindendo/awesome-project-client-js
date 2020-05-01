@@ -5,14 +5,14 @@
   justify-content: center;
   height: 100%;
   padding-top: 3em;
-  background-color: #f4f6f9;
+  background-color: $clr-Bg;
   &__sidebar {
     width: 18em;
-    padding: 0 0.5em;
+    padding: 3em 0.5em 0 0;
   }
   &__content {
     width: 42em;
-    background-color: white;
+    background-color: $clr-primary;
     border-left: 1px solid #dbdcdd;
     border-right: 1px solid #dbdcdd;
   }

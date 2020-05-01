@@ -1,0 +1,15 @@
+@import "../../const.scss";
+
+.item {
+  background-color: $clr-primary;
+  border-radius: 3px;
+  &__td {
+    padding: 1em;
+  }
+  &__td:last-child {
+    text-align: end;
+    svg {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,10 +1,11 @@
 /* Variables - Root */
 
-$ff-primary: "Open Sans", sans-serif;
+$ff-primary: "Roboto", sans-serif;
 
 $clr-primary: white;
 $clr-Bg: #f4f6f9;
 $clr-secunderyBg: #1c3b68;
+$clr-color1: #26b9f1;
 $clr-focus: rgb(255, 187, 0);
 
 $shadowBox: 0 0 50px 10px rgba(0, 0, 0, 0.1), 0 0 20px 5px rgba(0, 0, 0, 0.15),
@@ -12,6 +13,9 @@ $shadowBox: 0 0 50px 10px rgba(0, 0, 0, 0.1), 0 0 20px 5px rgba(0, 0, 0, 0.15),
 
 $shadowBox_right: 5px 0px 50px 10px rgba(0, 0, 0, 0.1),
   3px 0px 20px 1px rgba(0, 0, 0, 0.15), 1px 0px 0px 0px rgba(0, 0, 0, 0.2);
+
+$shadowBox_button: 0px 20px 30px 0 rgba(0, 0, 0, 0.1),
+  0 4px 4px 0 rgba(0, 0, 0, 0.15), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 
 /* Mixins  */
 
@@ -23,4 +27,22 @@ $shadowBox_right: 5px 0px 50px 10px rgba(0, 0, 0, 0.1),
 
 @mixin transition($time, $property: all, $easing: ease-out) {
   transition: $property $time $easing;
+}
+
+@mixin button($width, $heigh) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  width: $width;
+  height: $heigh;
+  background-color: $clr-primary;
+  cursor: pointer;
+  box-shadow: $shadowBox_button;
+  transition: background 200ms ease-in-out, color 200ms ease-in-out;
+  &:hover,
+  &:focus {
+    background-color: $clr-secunderyBg;
+    color: $clr-primary;
+  }
 }

@@ -1,0 +1,12 @@
+@import "../../const.scss";
+
+.tasks {
+  padding: 4em 1em 1em 3em;
+  &__title {
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+  .hr {
+    border: 1px solid #f4f6f9;
+  }
+}

@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage";
 import NotePage from "./pages/NotePage";
 import OldPage from "./pages/OldPage";
 import TodoPage from "./pages/TodoPage";
+import CloudPage from "./pages/CloudPage";
 
 //axios
 import axios from "axios";
@@ -17,11 +18,12 @@ const App = () => {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={LandingPage}></Route>
-          <Route exact path="/home" component={MainPage}></Route>
-          <Route exact path="/home/:docId" component={NotePage}></Route>
-          <Route exact path="/todo" component={TodoPage}></Route>
-          <Route exact path="/old" component={OldPage}></Route>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/home" component={MainPage} />
+          <Route exact path="/home/:docId" component={NotePage} />
+          <Route exact path="/todo" component={TodoPage} />
+          <Route exact path="/cloud" component={CloudPage} />
+          <Route exact path="/old" component={OldPage} />
         </Switch>
       </Router>
     </div>
