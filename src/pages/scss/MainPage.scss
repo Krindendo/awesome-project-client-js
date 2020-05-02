@@ -1,4 +1,62 @@
 @import "../../const.scss";
 
 .mainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em 0;
+  height: auto;
+  background-color: $clr-Bg;
+
+  &__button {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    font-size: 1.3rem;
+    padding: 0.5em 1em;
+    border-radius: 30px;
+    background-color: $clr-primary;
+    box-shadow: $shadowBox_button;
+    cursor: pointer;
+    transition: background 250ms ease-in-out, color 250ms ease-in-out;
+    &__text {
+      span {
+        vertical-align: middle;
+        display: inline-block;
+        margin-left: 0.2em;
+
+        svg {
+          background-color: $clr-secunderyBg;
+          border-radius: 50%;
+          width: 2em;
+          height: 2em;
+          margin-top: 2px;
+          padding: 0.4em;
+          color: $clr-primary;
+        }
+      }
+    }
+  }
+  &__button:hover,
+  &__button:focus {
+    background-color: $clr-secunderyBg;
+    .mainPage__button__text {
+      color: $clr-primary;
+      span {
+        svg {
+          background-color: $clr-primary;
+          color: $clr-secunderyBg;
+        }
+      }
+    }
+  }
+}
+
+@include mq(560px) {
+  .mainPage {
+    &__button {
+      bottom: 2em;
+      right: 2em;
+    }
+  }
 }

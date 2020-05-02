@@ -6,6 +6,14 @@
   &__td {
     padding: 1em;
   }
+  .disable {
+    display: none;
+  }
+  @include mq(500px) {
+    .disable {
+      display: table-cell;
+    }
+  }
   &__td:last-child {
     text-align: end;
     svg {

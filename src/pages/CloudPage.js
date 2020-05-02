@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./scss/CloudPage.scss";
 import Navbar from "../components/Navbar";
 import DragDrop from "../components/todoComponents/DragDrop";
-import TableItem from "../components/todoComponents/TableItem";
+import TableItem from "../components/TableItem";
 
 const CloudPage = () => {
   const handleUpload = (event) => {
@@ -41,8 +41,10 @@ const CloudPage = () => {
               <tr className="grid__table__thead__tr">
                 <th className="grid__table__thead__tr__th">File name</th>
                 <th className="grid__table__thead__tr__th">Location</th>
-                <th className="grid__table__thead__tr__th">Added</th>
-                <th className="grid__table__thead__tr__th">File size</th>
+                <th className="grid__table__thead__tr__th disable">Added</th>
+                <th className="grid__table__thead__tr__th disable">
+                  File size
+                </th>
                 <th className="grid__table__thead__tr__th"></th>
               </tr>
             </thead>

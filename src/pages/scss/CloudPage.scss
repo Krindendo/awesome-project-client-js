@@ -1,13 +1,13 @@
 @import "../../const.scss";
 
 .cloudPage {
-  height: 100%;
-  padding-top: 3em;
+  padding: 3em 0;
+  height: auto;
   background-color: $clr-Bg;
 
   .grid {
     width: 70em;
-    padding-top: 3em;
+    padding: 3em 1em;
     &__upload {
       &__title {
         font-weight: 500;
@@ -37,6 +37,14 @@
             text-align: start;
             font-weight: 500;
             padding: 0 1em;
+          }
+          .disable {
+            display: none;
+          }
+          @include mq(500px) {
+            .disable {
+              display: table-cell;
+            }
           }
         }
       }
