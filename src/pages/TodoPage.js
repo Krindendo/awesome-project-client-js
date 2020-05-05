@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/todoComponents/Sidebar";
 import Tasks from "../components/todoComponents/Tasks";
 
-const TodoPage = () => {
+export const TodoPage = () => {
   return (
     <div className="todoPage">
       <Navbar activeLocation="todo" />
@@ -17,5 +17,3 @@ const TodoPage = () => {
     </div>
   );
 };
-
-export default TodoPage;

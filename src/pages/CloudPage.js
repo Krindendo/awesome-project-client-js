@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import DragDrop from "../components/todoComponents/DragDrop";
 import TableItem from "../components/TableItem";
 
-const CloudPage = () => {
+export const CloudPage = () => {
   const handleUpload = (event) => {
     console.log(event.target.files[0]);
   };
@@ -68,8 +68,6 @@ const CloudPage = () => {
     </div>
   );
 };
-
-export default CloudPage;
 
 // https://programmingwithmosh.com/javascript/react-file-upload-proper-server-side-nodejs-easy/
 // https://www.freepik.com/premium-psd/file-downloader-application_5841449.htm

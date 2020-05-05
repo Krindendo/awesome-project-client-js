@@ -12,6 +12,7 @@
     height: 100%;
     width: 50%;
     background-color: $clr-Bg;
+    padding-left: 2em; //1024px
 
     &__insideBox {
       width: 39em;
@@ -27,6 +28,7 @@
     height: 100%;
     width: 50%;
     background-color: $clr-secunderyBg;
+    padding-right: 2em; //1024px
 
     &__insideBox {
       width: 39em;
@@ -43,10 +45,84 @@
         background-color: rgba(28, 59, 104, 0.6);
 
         &__content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          height: 100%;
+          padding: 3em;
+          color: white;
+          &__title {
+            font-size: 1.6rem;
+            font-weight: 300;
+            &__span {
+              font-size: 1.9rem;
+              font-weight: 500;
+            }
+          }
+          .hr {
+            width: 80%;
+            border-color: white;
+            margin: 1em 0 2em 0;
+          }
+          &__text {
+            line-height: 1.4;
+            letter-spacing: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+/*
+@include mq(0px) {
+  .landingPage {
+    display: flex;
+    flex-direction: column;
+
+    .leftSide {
+      padding-left: 2em; //1024px
+
+      &__insideBox {
+      }
+    }
+
+    .rightSide {
+      padding-right: 2em; //1024px
+
+      &__insideBox {
+        &__shade {
+          &__content {
+          }
         }
       }
     }
   }
 }
 
+@include mq(0px) {
+  .landingPage {
+    display: flex;
+    flex-direction: column;
+
+    .leftSide {
+      padding-left: 2em; //1024px
+
+      &__insideBox {
+      }
+    }
+
+    .rightSide {
+      padding-right: 2em; //1024px
+
+      &__insideBox {
+        &__shade {
+          &__content {
+          }
+        }
+      }
+    }
+  }
+}
+*/
 // https://convertio.co/jpg-jp2/

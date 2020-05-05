@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import ListSection from "../components/mainComponents/ListSection";
 import { FaPlus } from "react-icons/fa";
 
-const MainPage = () => {
+export const MainPage = () => {
   return (
     <div className="mainPage">
       <Navbar activeLocation="home" />
@@ -21,5 +21,3 @@ const MainPage = () => {
     </div>
   );
 };
-
-export default MainPage;
