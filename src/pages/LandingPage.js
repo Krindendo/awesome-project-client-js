@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./scss/LandingPage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../redux/actions/user.action";
+import { UI_RESET } from "../redux/types";
+import { FaSpinner } from "react-icons/fa";
 
 export const LandingPage = () => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({});
   const { email, password } = inputs;
   const [ui_Login, setUi_Login] = useState(true);
-  const loggingIn = useSelector((state) => state.authentication.loggingIn);
-  /* {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>} */
+  const loading = useSelector((state) => state.ui.loading);
+  const errors = useSelector((state) => state.ui.errors);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export const LandingPage = () => {
   };
 
   const handleLogin = () => {
-    setErrors({});
+    dispatch({ type: UI_RESET });
     setInputs({ ...inputs, password: "" });
     setUi_Login(!ui_Login);
   };
@@ -46,7 +47,7 @@ export const LandingPage = () => {
     <div className="landingPage">
       <div className="leftSide">
         <div className="leftSide__insideBox">
-          <h1 className="leftSide__insideBox__logo"></h1>
+          <h1 className="leftSide__insideBox__logo">Awesome Project</h1>
           {ui_Login && (
             <form
               className="leftSide__insideBox__form"
@@ -74,7 +75,13 @@ export const LandingPage = () => {
                 onChange={handleChange}
               />
               <button type="submit" className="submit">
-                <p className="submit__p">Log in</p>
+                {loading ? (
+                  <span className="submit__spinner">
+                    <FaSpinner />
+                  </span>
+                ) : (
+                  <p className="submit__p">Log in</p>
+                )}
               </button>
               <div className="leftSide__insideBox__form__options">
                 <label className="remeber">
@@ -110,7 +117,7 @@ export const LandingPage = () => {
               <p>Radi</p>
             </div>
           )}
-          {errors.general && <p className="error">{errors.general}</p>}
+          {errors.general && <p className="error__general">{errors.general}</p>}
         </div>
       </div>
       <div className="rightSide">

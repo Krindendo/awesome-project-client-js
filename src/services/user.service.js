@@ -26,22 +26,24 @@ const logout = () => {
   delete axios.defaults.headers.common["Authorization"];
   delete axios.defaults.headers.common["userid"];
 };
-const login_anonymous = () => {};
-const getUser = () => {
-  //Get user nick
-  axios
-    .get("/home")
+const login_anonymous = () => {
+  console.log("Login anonymously");
+  return axios
+    .get("/login")
     .then(({ data }) => {})
     .catch((err) => {});
 };
-const signup = (user) => {
-  // Nece biti moguce, izbacuje error
+const getUserNick = () => {
+  return "krindendo";
+  return axios
+    .get("/home")
+    .then(({ data }) => {})
+    .catch((err) => {});
 };
 
 export const userService = {
   login,
   logout,
-  signup,
-  getUser,
+  getUserNick,
   login_anonymous,
 };

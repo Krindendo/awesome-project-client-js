@@ -61,6 +61,12 @@ export const CloudPage = () => {
                 date="01.05.2020"
                 size="340kb"
               />
+              <TableItem
+                name="Nesto"
+                location="Zanimljivo"
+                date="01.05.2020"
+                size="340kb"
+              />
             </tbody>
           </table>
         </div>

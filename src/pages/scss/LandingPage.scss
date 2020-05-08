@@ -2,17 +2,20 @@
 
 .landingPage {
   display: flex;
-  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
   width: 100%;
+  background-color: $clr-Bg;
 
   .leftSide {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    width: 50%;
+    width: 100%;
     background-color: $clr-Bg;
-    padding-left: 2em; //1024px
+    padding: 0;
 
     &__insideBox {
       display: flex;
@@ -21,6 +24,11 @@
       width: 39em;
       height: 42em;
       box-shadow: $shadowBox;
+      .error__general {
+        margin: 1em 0;
+        font-size: 1.2em;
+        color: $clr-color2;
+      }
       &__logo {
         margin: 2em 0;
       }
@@ -29,7 +37,7 @@
         flex-direction: column;
         align-items: center;
         height: 25em;
-        width: 22em;
+        width: 95%;
         padding: 1em;
         background-color: white;
         color: rgba(0, 0, 0, 0.4);
@@ -52,7 +60,7 @@
         }
         .input:focus {
           outline: none;
-          border: 2px solid white;
+          border: 2px solid $clr-color1;
           border-radius: 6px;
         }
         .submit {
@@ -60,7 +68,7 @@
           height: 2.5em;
           margin-top: 1.2em;
           font-size: 1.3rem;
-          background-color: rgb(255, 72, 88);
+          background-color: $clr-color2;
           color: white;
           border: none;
           border-radius: 6px;
@@ -72,9 +80,17 @@
           &__p:hover {
             transform: scale(1.1);
           }
+          &__spinner {
+            font-size: 1.3em;
+            position: relative;
+            bottom: -4px;
+            svg {
+              animation: rotation 1.2s infinite linear;
+            }
+          }
         }
         .submit:focus {
-          outline-color: rgb(255, 72, 88);
+          outline-color: $clr-color2;
         }
 
         &__options {
@@ -106,7 +122,7 @@
               height: 20px;
               width: 20px;
               background: white;
-              border: 3px solid white;
+              border: 3px solid $clr-color3;
               border-radius: 6px;
             }
             .checkmark::after {
@@ -125,11 +141,11 @@
             }
           }
           .remeber:hover .checkbox ~ .checkmark {
-            background-color: white;
+            background-color: $clr-color3;
           }
           .remeber .checkbox:checked ~ .checkmark {
-            background-color: white;
-            border-color: white;
+            background-color: $clr-color1;
+            border-color: $clr-color1;
           }
           .remeber input:checked ~ .checkmark::after {
             display: block;
@@ -138,16 +154,16 @@
             display: inline-block;
 
             cursor: pointer;
-            color: white;
+            color: $clr-color1;
 
             border: none;
             background: none;
             padding: 0;
             font: inherit;
-            font-weight: bold;
+            font-weight: 500;
           }
           .forgot:hover {
-            color: white;
+            color: $clr-color2;
           }
           .forgot:focus {
             outline: none;
@@ -159,7 +175,8 @@
           color: white;
         }
         &__bottom {
-          margin-top: 20px;
+          margin-top: 1.2em;
+          margin-bottom: 0.5em;
           width: 100%;
           display: flex;
           align-items: center;
@@ -171,20 +188,17 @@
           .anonymous,
           .register {
             display: inline-block;
-            color: white;
-
             cursor: pointer;
-            color: white;
-
+            color: $clr-color1;
             border: none;
             background: none;
             padding: 0;
             font: inherit;
-            font-weight: bold;
+            font-weight: 500;
           }
           .anonymous:hover,
           .register:hover {
-            color: white;
+            color: $clr-color2;
           }
           .anonymous:focus,
           .register:focus {
@@ -200,9 +214,9 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-    width: 50%;
+    width: 100%;
     background-color: $clr-secunderyBg;
-    padding-right: 2em; //1024px
+    padding: 0;
 
     &__insideBox {
       width: 39em;
@@ -248,21 +262,74 @@
     }
   }
 }
-/*
-@include mq(0px) {
+
+@include mq(375px) {
   .landingPage {
-    display: flex;
-    flex-direction: column;
+    .leftSide {
+      width: 90%;
+    }
+
+    .rightSide {
+      width: 90%;
+    }
+  }
+}
+
+@include mq(425px) {
+  .landingPage {
+    .leftSide {
+      width: 80%;
+    }
+
+    .rightSide {
+      width: 80%;
+    }
+  }
+}
+@include mq(545px) {
+  .landingPage {
+    .leftSide {
+      width: 70%;
+    }
+
+    .rightSide {
+      width: 70%;
+    }
+  }
+}
+@include mq(690px) {
+  .landingPage {
+    .leftSide {
+      width: 60%;
+    }
+
+    .rightSide {
+      width: 60%;
+    }
+  }
+}
+
+@include mq(1024px) {
+  .landingPage {
+    flex-direction: row;
+    height: 100%;
 
     .leftSide {
-      padding-left: 2em; //1024px
+      padding-left: 2em;
+      justify-content: flex-end;
+      width: 50%;
 
       &__insideBox {
+        &__form {
+          width: 22em;
+        }
       }
     }
 
     .rightSide {
-      padding-right: 2em; //1024px
+      padding-right: 2em;
+      justify-content: flex-start;
+      width: 50%;
 
       &__insideBox {
         &__shade {
@@ -274,29 +341,12 @@
   }
 }
 
-@include mq(0px) {
-  .landingPage {
-    display: flex;
-    flex-direction: column;
-
-    .leftSide {
-      padding-left: 2em; //1024px
-
-      &__insideBox {
-      }
-    }
-
-    .rightSide {
-      padding-right: 2em; //1024px
-
-      &__insideBox {
-        &__shade {
-          &__content {
-          }
-        }
-      }
-    }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }
-*/
 // https://convertio.co/jpg-jp2/

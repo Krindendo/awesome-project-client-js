@@ -1,10 +1,10 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../types";
+import { LOADING_UI, LOGIN_SUCCESS, SET_ERRORS, LOGOUT } from "../types";
 import { userService } from "../../services";
 import { history } from "../../helpers";
 
 const login = (email, password) => {
   return (dispatch) => {
-    dispatch(request({ email }));
+    dispatch(request());
 
     userService.login(email, password).then((data) => {
       console.log("data", data);
@@ -17,14 +17,14 @@ const login = (email, password) => {
       }
     });
   };
-  function request(user) {
-    return { type: LOGIN_REQUEST, payload: user };
+  function request() {
+    return { type: LOADING_UI };
   }
   function success(user) {
     return { type: LOGIN_SUCCESS, payload: user };
   }
   function failure(error) {
-    return { type: LOGIN_FAILURE, payload: error };
+    return { type: SET_ERRORS, payload: error.response.data };
   }
 };
 const logout = () => {
@@ -34,8 +34,14 @@ const logout = () => {
 const login_anonymous = () => {
   console.log("Anonymous Login");
 };
-const getUser = (user) => {};
-const signup = (user) => {};
+const getUser = () => {
+  return userService.getUserNick();
+};
+const signup = () => {
+  return (dispatch) => {
+    dispatch({ type: SET_ERRORS, payload: "Sign up is not posible" });
+  };
+};
 
 export const userActions = {
   login,

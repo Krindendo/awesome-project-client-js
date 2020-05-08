@@ -1,7 +1,5 @@
 //Authentication reducer types
-export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT = "LOGOUT";
 
 //User reducer types
@@ -9,9 +7,8 @@ export const LOGOUT = "LOGOUT";
 //UI reducer types
 export const SET_ERRORS = "SET_ERRORS";
 export const LOADING_UI = "LOADING_UI";
+
 export const PROJECT_ID = "PROJECT_ID";
-export const STOP_LOADING_UI = "STOP_LOADING_UI";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const UI_PROJECT = "UI_PROJECT";
 export const UI_TASK = "UI_TASK";
 export const UI_EDIT = "UI_EDIT";
