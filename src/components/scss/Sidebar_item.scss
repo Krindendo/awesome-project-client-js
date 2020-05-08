@@ -1,0 +1,27 @@
+@import "../../const.scss";
+
+.sidebar__list__item {
+  padding: 0.4em;
+  margin: 2px 0;
+  cursor: pointer;
+  border-radius: 4%;
+
+  &__icon {
+    font-size: 1.1em;
+    vertical-align: middle;
+  }
+
+  &__text {
+    display: inline-block;
+    color: black;
+    font-weight: 300;
+    padding-left: 4px;
+  }
+  .active-text {
+    font-weight: 500;
+  }
+}
+
+.active-item {
+  background-color: $clr-primary;
+}

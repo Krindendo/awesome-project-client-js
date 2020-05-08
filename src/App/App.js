@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.scss";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-import history from "../helpers/history";
-import { AuthRoute } from "../helpers";
+import { history, AuthRoute } from "../helpers";
 import {
   LandingPage,
   MainPage,

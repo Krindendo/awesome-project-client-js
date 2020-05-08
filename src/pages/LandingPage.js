@@ -1,12 +1,116 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./scss/LandingPage.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../redux/actions/user.action";
 
 export const LandingPage = () => {
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
+  const { email, password } = inputs;
+  const [ui_Login, setUi_Login] = useState(true);
+  const loggingIn = useSelector((state) => state.authentication.loggingIn);
+  /* {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>} */
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userActions.logout());
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (email && password) {
+      dispatch(userActions.login(email, password));
+    }
+  };
+
+  const handleAnonymous = (event) => {
+    event.preventDefault();
+    dispatch(userActions.login_anonymous());
+  };
+
+  const handleLogin = () => {
+    setErrors({});
+    setInputs({ ...inputs, password: "" });
+    setUi_Login(!ui_Login);
+  };
   return (
     <div className="landingPage">
       <div className="leftSide">
         <div className="leftSide__insideBox">
-          <p>nesto</p>
+          <h1 className="leftSide__insideBox__logo"></h1>
+          {ui_Login && (
+            <form
+              className="leftSide__insideBox__form"
+              noValidate
+              onSubmit={handleSubmit}
+            >
+              <label className="label" htmlFor="email">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                className={errors.email ? "input error" : "input"}
+                value={email}
+                onChange={handleChange}
+              />
+              <label className="label" htmlFor="password">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                className={errors.email ? "input error" : "input"}
+                value={password}
+                onChange={handleChange}
+              />
+              <button type="submit" className="submit">
+                <p className="submit__p">Log in</p>
+              </button>
+              <div className="leftSide__insideBox__form__options">
+                <label className="remeber">
+                  Remember Me
+                  <input type="checkbox" className="checkbox" />
+                  <span className="checkmark"></span>
+                </label>
+                <button type="button" className="forgot">
+                  Forgot Password?
+                </button>
+              </div>
+              <hr className="hr" />
+              <div className="leftSide__insideBox__form__bottom">
+                <button
+                  type="button"
+                  className="anonymous"
+                  onClick={handleAnonymous}
+                >
+                  Anonymous login
+                </button>
+                <button
+                  type="button"
+                  className="register"
+                  onClick={handleLogin}
+                >
+                  Register New User?
+                </button>
+              </div>
+            </form>
+          )}
+          {!ui_Login && (
+            <div>
+              <p>Radi</p>
+            </div>
+          )}
+          {errors.general && <p className="error">{errors.general}</p>}
         </div>
       </div>
       <div className="rightSide">

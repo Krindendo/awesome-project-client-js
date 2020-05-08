@@ -1,6 +1,6 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "../types";
 
-let user = JSON.parse(localStorage.getItem("user"));
+let user = localStorage.getItem("user");
 const initialState = user ? { loggedIn: true, user } : {};
 
 export const authentication = (state = initialState, action) => {

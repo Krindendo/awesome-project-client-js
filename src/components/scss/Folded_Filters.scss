@@ -1,0 +1,17 @@
+.foldedFilters {
+  &__list {
+    list-style-type: none;
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+    &__item {
+      cursor: pointer;
+      margin: 2px 8px 2px 0px;
+      padding: 4px 4px;
+      font-weight: 300;
+    }
+    &__item:hover {
+      font-weight: 400;
+      background-color: white;
+    }
+  }
+}

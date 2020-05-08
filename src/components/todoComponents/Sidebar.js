@@ -1,54 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import "../scss/Sidebar.scss";
-import {
-  FaChevronDown,
-  FaInbox,
-  FaRegCalendarAlt,
-  FaRegCalendar,
-} from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
+import Folded_Projects from "./Folded_Projects";
+import Folded_Filters from "./Folded_Filters";
+import Sidebar_Item from "./Sidebar_Item";
 
 const Sidebar = () => {
+  const [active, setActive] = useState("Today");
+  const [showProjects, setShowProjects] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const handleActive = (_active) => {
+    setActive(_active);
+  };
+
+  const handleShowProject = () => {
+    setShowProjects(!showProjects);
+  };
+  const handleShowFilter = () => {
+    setShowFilter(!showFilter);
+  };
   return (
     <div className="sidebar">
       <ul className="sidebar__list">
-        <li className="sidebar__list__item active-item">
-          <span className="sidebar__list__item__icon">
-            <FaInbox />
-          </span>
-          <p className="sidebar__list__item__text active-text">Today</p>
-        </li>
-        <li className="sidebar__list__item">
-          <span className="sidebar__list__item__icon">
-            <FaRegCalendar />
-          </span>
-          <p className="sidebar__list__item__text">Tomorrow</p>
-        </li>
-        <li className="sidebar__list__item">
-          <span className="sidebar__list__item__icon">
-            <FaRegCalendarAlt />
-          </span>
-          <p className="sidebar__list__item__text">Upcoming</p>
-        </li>
+        <Sidebar_Item handle={handleActive} active={active} text="Today" />
+        <Sidebar_Item handle={handleActive} active={active} text="Tomorrow" />
+        <Sidebar_Item handle={handleActive} active={active} text="Upcoming" />
       </ul>
       <div className="sidebar__mid">
         <hr className="hr" />
-        <div className="sidebar__mid__title">
+        <div
+          tabIndex={0}
+          role="button"
+          onKeyDown={handleShowProject}
+          onClick={handleShowProject}
+          className="sidebar__mid__title"
+        >
           <span className="sidebar__mid__title__icon">
-            <FaChevronDown className="sidebar__mid__title__icon__svg" />
+            <FaChevronDown
+              className={
+                showProjects
+                  ? "hidden-projects"
+                  : "sidebar__mid__title__icon__svg"
+              }
+            />
           </span>
           <p className="sidebar__mid__title__text">Projects</p>
         </div>
-        <div className="sidebar__mid__dropmanu"></div>
+        {showProjects ? <Folded_Projects /> : null}
       </div>
       <div className="sidebar__mid">
         <hr className="hr" />
-        <div className="sidebar__mid__title">
+        <div
+          tabIndex={0}
+          role="button"
+          onKeyDown={handleShowFilter}
+          onClick={handleShowFilter}
+          className="sidebar__mid__title"
+        >
           <span className="sidebar__mid__title__icon">
-            <FaChevronDown className="sidebar__mid__title__icon__svg" />
+            <FaChevronDown
+              className={
+                showFilter
+                  ? "hidden-projects"
+                  : "sidebar__mid__title__icon__svg"
+              }
+            />
           </span>
           <p className="sidebar__mid__title__text">Filters</p>
         </div>
-        <div className="sidebar__mid__dropmanu"></div>
+        {showFilter ? <Folded_Filters /> : null}
       </div>
     </div>
   );

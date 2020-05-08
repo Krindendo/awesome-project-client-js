@@ -3,27 +3,7 @@
 .sidebar {
   &__list {
     list-style-type: none;
-    &__item {
-      padding: 0.4em;
-      margin: 2px 0;
-      cursor: pointer;
-      border-radius: 4%;
 
-      &__icon {
-        font-size: 1.1em;
-        vertical-align: middle;
-      }
-
-      &__text {
-        display: inline-block;
-        color: black;
-        font-weight: 300;
-        padding-left: 4px;
-      }
-      .active-text {
-        font-weight: 500;
-      }
-    }
     &__item:nth-child(1) {
       color: #81d4fa;
     }
@@ -34,8 +14,7 @@
       color: #ffab91;
     }
     &__item:hover,
-    &__item:focus,
-    .active-item {
+    &__item:focus {
       background-color: $clr-primary;
     }
   }
@@ -65,8 +44,8 @@
     &__title:focus {
       background-color: $clr-primary;
     }
-
-    &__dropmanu {
+    &__title:focus {
+      outline: none;
     }
   }
 }

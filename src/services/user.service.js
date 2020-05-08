@@ -5,14 +5,16 @@ axios.defaults.baseURL =
   "https://europe-west1-awesomeproject1010.cloudfunctions.net/api";
 
 const login = (email, password) => {
-  userData = { email: email, password: password };
-  axios
+  let userData = { email: email, password: password };
+  return axios
     .post("/login", userData)
     .then(({ data }) => {
-      console.log("user", data);
-      console.log("jwtDecode(user)", jwtDecode(user));
-      localStorage.setItem("user", jwtDecode(data));
-      return { user: data };
+      const IdToken = `Bearer ${data.token}`;
+      const decodedToken = jwtDecode(data.token);
+      axios.defaults.headers.common["Authorization"] = IdToken;
+      axios.defaults.headers.common["userid"] = decodedToken.user_id;
+      localStorage.setItem("user", decodedToken);
+      return { user: decodedToken };
     })
     .catch((err) => {
       console.log("err", err);
@@ -21,6 +23,8 @@ const login = (email, password) => {
 };
 const logout = () => {
   localStorage.removeItem("user");
+  delete axios.defaults.headers.common["Authorization"];
+  delete axios.defaults.headers.common["userid"];
 };
 const login_anonymous = () => {};
 const getUser = () => {
