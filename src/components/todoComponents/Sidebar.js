@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "../scss/Sidebar.scss";
 import { FaChevronDown } from "react-icons/fa";
-import Folded_Projects from "./Folded_Projects";
-import Folded_Filters from "./Folded_Filters";
-import Sidebar_Item from "./Sidebar_Item";
+import { FoldedProjects, FoldedFilters, SidebarItem } from "../todoComponents";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const [active, setActive] = useState("Today");
   const [showProjects, setShowProjects] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -22,9 +20,9 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul className="sidebar__list">
-        <Sidebar_Item handle={handleActive} active={active} text="Today" />
-        <Sidebar_Item handle={handleActive} active={active} text="Tomorrow" />
-        <Sidebar_Item handle={handleActive} active={active} text="Upcoming" />
+        <SidebarItem handle={handleActive} active={active} text="Today" />
+        <SidebarItem handle={handleActive} active={active} text="Tomorrow" />
+        <SidebarItem handle={handleActive} active={active} text="Upcoming" />
       </ul>
       <div className="sidebar__mid">
         <hr className="hr" />
@@ -46,7 +44,7 @@ const Sidebar = () => {
           </span>
           <p className="sidebar__mid__title__text">Projects</p>
         </div>
-        {showProjects ? <Folded_Projects /> : null}
+        {showProjects ? <FoldedProjects /> : null}
       </div>
       <div className="sidebar__mid">
         <hr className="hr" />
@@ -68,10 +66,8 @@ const Sidebar = () => {
           </span>
           <p className="sidebar__mid__title__text">Filters</p>
         </div>
-        {showFilter ? <Folded_Filters /> : null}
+        {showFilter ? <FoldedFilters /> : null}
       </div>
     </div>
   );
 };
-
-export default Sidebar;

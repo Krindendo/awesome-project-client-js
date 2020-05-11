@@ -5,6 +5,26 @@
   justify-content: center;
   height: 100%;
   padding-top: 3em;
+  &__grayScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+  &__grid {
+    position: fixed;
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 11%;
+    z-index: 101;
+  }
+
   &__sidebar {
     width: 18em;
     padding: 3em 0.5em 0 0;

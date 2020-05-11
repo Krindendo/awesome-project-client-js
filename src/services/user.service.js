@@ -35,10 +35,10 @@ const login_anonymous = () => {
 };
 const getUserNick = () => {
   return "krindendo";
-  return axios
-    .get("/home")
-    .then(({ data }) => {})
-    .catch((err) => {});
+  // return axios
+  //   .get("/home")
+  //   .then(({ data }) => {})
+  //   .catch((err) => {});
 };
 
 export const userService = {

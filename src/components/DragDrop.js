@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../scss/DragDrop.scss";
+import "./scss/DragDrop.scss";
 
 const DragDrop = ({ handleDropfile, children }) => {
   const [dragging, setDragging] = useState(false);

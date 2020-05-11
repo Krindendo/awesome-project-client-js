@@ -1,46 +1,40 @@
-import { LOADING_UI, LOGIN_SUCCESS, SET_ERRORS, LOGOUT } from "../types";
+import { LOADING_UI, UI_RESET, SET_ERRORS, LOGOUT, GET_NICK } from "../types";
 import { userService } from "../../services";
 import { history } from "../../helpers";
 
 const login = (email, password) => {
   return (dispatch) => {
-    dispatch(request());
+    dispatch({ type: LOADING_UI });
 
     userService.login(email, password).then((data) => {
       console.log("data", data);
 
       if (data.user) {
-        dispatch(success(data.user));
+        dispatch({ type: UI_RESET });
         history.push("/home");
       } else {
-        dispatch(failure(data.error));
+        dispatch({ type: SET_ERRORS, payload: data.error.response.data });
       }
     });
   };
-  function request() {
-    return { type: LOADING_UI };
-  }
-  function success(user) {
-    return { type: LOGIN_SUCCESS, payload: user };
-  }
-  function failure(error) {
-    return { type: SET_ERRORS, payload: error.response.data };
-  }
 };
 const logout = () => {
   userService.logout();
-  return { type: LOGOUT };
+  return (dispatch) => dispatch({ type: LOGOUT });
 };
 const login_anonymous = () => {
   console.log("Anonymous Login");
 };
 const getUser = () => {
-  return userService.getUserNick();
+  let nick = userService.getUserNick();
+  return (dispatch) => dispatch({ type: GET_NICK, payload: nick });
 };
 const signup = () => {
-  return (dispatch) => {
-    dispatch({ type: SET_ERRORS, payload: "Sign up is not posible" });
-  };
+  return (dispatch) =>
+    dispatch({
+      type: SET_ERRORS,
+      payload: { signup: "Sign up is not posible" },
+    });
 };
 
 export const userActions = {

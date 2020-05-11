@@ -16,7 +16,7 @@ const Navbar = ({ activeLocation }) => {
               }
             >
               <Link className="nav__list__item__button__link" to="/home">
-                <p className="p">AwesomeProject v4</p>
+                <p className="p">AwesomeProject v5</p>
               </Link>
             </button>
           </li>

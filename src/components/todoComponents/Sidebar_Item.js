@@ -2,9 +2,7 @@ import React from "react";
 import "../scss/Sidebar_item.scss";
 import { FaInbox, FaRegCalendarAlt, FaRegCalendar } from "react-icons/fa";
 
-const SidebarItem = ({ handle, active, text }) => {
-  console.log("active", active);
-  console.log("text", text);
+export const SidebarItem = ({ handle, active, text }) => {
   return (
     <li
       onClick={() => handle(text)}
@@ -35,5 +33,3 @@ const SidebarItem = ({ handle, active, text }) => {
     </li>
   );
 };
-
-export default SidebarItem;

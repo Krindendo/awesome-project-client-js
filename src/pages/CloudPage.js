@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./scss/CloudPage.scss";
 import Navbar from "../components/Navbar";
-import DragDrop from "../components/todoComponents/DragDrop";
+import DragDrop from "../components/DragDrop";
 import TableItem from "../components/TableItem";
 
 export const CloudPage = () => {

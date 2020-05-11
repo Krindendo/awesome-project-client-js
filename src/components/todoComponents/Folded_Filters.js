@@ -1,7 +1,7 @@
 import React from "react";
 import "../scss/Folded_Filters.scss";
 
-const FoldedFilters = () => {
+export const FoldedFilters = () => {
   return (
     <div className="foldedFilters">
       <ul className="foldedFilters__list">
@@ -13,5 +13,3 @@ const FoldedFilters = () => {
     </div>
   );
 };
-
-export default FoldedFilters;

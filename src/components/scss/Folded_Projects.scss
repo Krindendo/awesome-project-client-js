@@ -1,32 +1,44 @@
-.foldedProjects {
-}
+@import "../../const.scss";
 
-// .div{
-//     display:flex;
-//     align-items: center;
-//     width: 90%;
-//     margin: 4px 0px;
-//     cursor: pointer;
-// }
-// .div:hover, .activeDiv{
-//     background-color: white;
-// }
-// .div:hover .one{
-//     visibility: visible;
-// }
-// .div:hover li, .activeLi{
-//     font-weight: 400;
-// }
-// .icons{
-//     margin-left: auto;
-//     .one{
-//         margin: 0px 4px;
-//         visibility: hidden;
-//     }
-//     .orange:hover{
-//         color:#FFAB91;
-//     }
-//     .red:hover{
-//         color: $color3;
-//     }
-// }
+.foldedProjects {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-top: 0.5em;
+  padding-left: 1.5em;
+  cursor: pointer;
+  list-style-type: none;
+  &__item {
+    cursor: pointer;
+    margin: 2px 8px 2px 0px;
+    padding: 4px 4px;
+    font-weight: 300;
+    &__title {
+      display: inline-block;
+    }
+    &__icons {
+      float: right;
+      &__icon {
+        margin: 0px 4px;
+        visibility: hidden;
+        &:hover:nth-child(1) {
+          color: $clr-color4;
+        }
+        &:hover:nth-child(2) {
+          color: $clr-color2;
+        }
+      }
+    }
+    &:hover &__icons__icon {
+      visibility: visible;
+    }
+    &:hover,
+    .activeText {
+      font-weight: 400;
+    }
+  }
+  &__item:hover,
+  .activeItem {
+    background-color: white;
+  }
+}

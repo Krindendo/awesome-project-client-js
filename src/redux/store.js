@@ -1,16 +1,18 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import { authentication, users, ui } from "./reducers";
+import { users, ui, todo, home, cloud } from "./reducers";
 
 const initialState = {};
 
 const middleware = [thunk];
 
 const reducers = combineReducers({
-  authentication: authentication,
-  ui: ui,
-  users: users,
+  users,
+  ui,
+  todo,
+  home,
+  cloud,
 });
 
 const enhancer = compose(applyMiddleware(...middleware));
