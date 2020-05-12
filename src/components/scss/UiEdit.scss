@@ -5,4 +5,19 @@
   border-radius: 8px;
   width: 400px;
   height: 400px;
+
+  &__form {
+    &__last {
+    }
+    &__new {
+    }
+    &__input {
+    }
+    &__box {
+      &__edit {
+      }
+      &__cancel {
+      }
+    }
+  }
 }

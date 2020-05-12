@@ -4,8 +4,7 @@ import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { todoActions } from "../../redux/actions/todoData.action";
 
-export const ListOfTasks = (data) => {
-  console.log("taskData", data);
+export const ListOfTasks = ({ data }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {

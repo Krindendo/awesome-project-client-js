@@ -10,7 +10,11 @@ export const UiProject = () => {
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
-    todoActions.saveProject({ nameOfProject, priority });
+    let newProject = {
+      name: nameOfProject,
+      priority: priority,
+    };
+    dispatch(todoActions.saveProject(newProject));
     dispatch({ type: UI_RESET });
   };
   const handleName = (event) => {

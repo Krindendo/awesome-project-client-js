@@ -7,7 +7,6 @@ export const SET_ERRORS = "SET_ERRORS";
 export const LOADING_UI = "LOADING_UI";
 export const PROJECT_ID = "PROJECT_ID";
 export const UI_PROJECT = "UI_PROJECT";
-export const UI_TASK = "UI_TASK";
 export const UI_EDIT = "UI_EDIT";
 export const UI_CONFORM = "UI_CONFORM";
 export const UI_RESET = "UI_RESET";

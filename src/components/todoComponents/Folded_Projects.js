@@ -12,8 +12,8 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 export const FoldedProjects = () => {
   const projects = useSelector((state) => state.todo.projects);
-  const dispatch = useDispatch();
   const { name: active } = useSelector((state) => state.todo.selectedProject);
+  const dispatch = useDispatch();
   let check = helper.isObjectEmpty(projects);
 
   const handleSet = (docId, name, event) => {
@@ -37,7 +37,7 @@ export const FoldedProjects = () => {
           <li
             key={project.docId}
             className={
-              active === project.docId
+              active === project.name
                 ? "foldedProjects__item activeItem"
                 : "foldedProjects__item"
             }
@@ -45,7 +45,7 @@ export const FoldedProjects = () => {
           >
             <div
               className={
-                active === project.docId
+                active === project.name
                   ? "foldedProjects__item__title activeText"
                   : "foldedProjects__item__title"
               }

@@ -7,3 +7,6 @@ export * from "./UiConform";
 export * from "./UiEdit";
 export * from "./UiProject";
 export * from "./ListOfTasks";
+export * from "./AddProject";
+export * from "./AddTask";
+export * from "./UiTask";

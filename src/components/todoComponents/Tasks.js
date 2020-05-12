@@ -1,19 +1,24 @@
 import React from "react";
 import "../scss/Tasks.scss";
 import { useSelector } from "react-redux";
-import { ListOfTasks } from "./index";
-import { helper } from "../../helpers";
+import { ListOfTasks, AddTask } from "./index";
+import { helper, getTasksByProject } from "../../helpers";
 
 export const Tasks = () => {
-  const tasks = useSelector((state) => state.todo.tasks);
-  const { name } = useSelector((state) => state.todo.selectedProject);
-  let check = helper.isObjectEmpty(tasks);
+  const { tasks, projects, selectedProject } = useSelector(
+    (state) => state.todo
+  );
+  const { name } = selectedProject;
+  let sortedTasks = getTasksByProject(tasks, selectedProject);
+  let check = helper.isObjectEmpty(sortedTasks);
+
   return (
     <div className="tasks">
       <h2 className="tasks__title">{name}</h2>
       <ul className="tasks__list">
         {!check &&
-          tasks.map((task) => <ListOfTasks key={task.id} data={task} />)}
+          sortedTasks.map((task) => <ListOfTasks key={task.id} data={task} />)}
+        {!check && <AddTask />}
       </ul>
     </div>
   );

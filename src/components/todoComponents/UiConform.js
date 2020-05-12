@@ -8,7 +8,7 @@ export const UiConform = () => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.ui.projectId);
   const handleDelete = () => {
-    todoActions.deleteProject(id);
+    dispatch(todoActions.deleteProject(id));
     dispatch({ type: UI_RESET });
   };
   const handleCancel = () => {

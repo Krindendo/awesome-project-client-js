@@ -20,13 +20,15 @@ export const TodoPage = () => {
 
   useEffect(() => {
     dispatch(todoActions.loadProjects());
+    dispatch(todoActions.loadTasks());
   }, []);
 
   const showGray = () => {
     dispatch({ type: UI_RESET });
   };
   const disable = (event) => {
-    if (event.target.className === "grid") dispatch({ type: UI_RESET });
+    if (event.target.className === "todoPage__grid")
+      dispatch({ type: UI_RESET });
   };
 
   return (
