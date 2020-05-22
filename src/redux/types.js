@@ -23,11 +23,10 @@ export const DELETE_TASK = "DELETE_TASK";
 export const SELECT_PROJECT = "SELECT_PROJECT";
 
 //Home reducer types
-
-export const LOADING_NOTES = "LOADING_NOTES";
-export const GET_NOTES = "GET_NOTES";
+export const LOAD_TAGS = "LOAD_TAGS";
+export const LOAD_NOTES = "LOAD_NOTES";
+export const SELECT_TAG = "SELECT_TAG";
 export const SELECT_NOTE = "SELECT_NOTE";
-export const SAVE_SECTION = "SAVE_SECTION";
 export const SET_NOTE = "SET_NOTE";
 export const UPDATE_NOTE = "UPDATE_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";

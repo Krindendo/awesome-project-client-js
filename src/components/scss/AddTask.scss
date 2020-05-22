@@ -1,1 +1,17 @@
 @import "../../const.scss";
+
+.addTask {
+  &__hr {
+    border: 1px solid #f4f6f9;
+  }
+  &__div {
+    width: 110px;
+    color: $clr-color1;
+    cursor: pointer;
+    .plus {
+      font-size: 20px;
+      padding: 0 6px;
+      margin-right: 4px;
+    }
+  }
+}

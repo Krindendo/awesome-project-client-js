@@ -21,7 +21,6 @@ export const todo = (state = initialState, action) => {
       return {
         ...state,
         projects: action.payload,
-        loading_project: false,
       };
     case ADD_PROJECT:
       return {

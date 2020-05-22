@@ -1,1 +1,45 @@
 @import "../../const.scss";
+
+.listOfTasks {
+  list-style-type: none;
+  &__hr {
+    border: 1px solid #f4f6f9;
+  }
+  &__checkbox-holder {
+    margin-right: 5px;
+    page-break-inside: avoid;
+
+    display: inline-block;
+    vertical-align: middle;
+    &__checkbox {
+      position: relative;
+      cursor: pointer;
+      color: #343434;
+      height: 17px;
+      width: 17px;
+      display: block;
+      border: 1px solid grey;
+      border-radius: 50%;
+      &__chack {
+        display: none;
+        position: absolute;
+        top: -1px;
+        left: 1px;
+        svg {
+          font-size: 12px;
+        }
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+        .listOfTasks__checkbox-holder__checkbox__chack {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    padding: 4px 0;
+  }
+}

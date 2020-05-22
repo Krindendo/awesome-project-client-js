@@ -8,7 +8,6 @@ import {
   DELETE_TASK,
 } from "../types";
 import { todoService } from "../../services";
-import { useSelector } from "react-redux";
 
 const loadProjects = () => {
   return (dispatch) => {
@@ -83,6 +82,7 @@ const saveTask = (newTask) => {
   };
 };
 const deleteTask = (taskId) => {
+  //Ne radi
   return (dispatch) => {
     todoService.deleteTask(taskId).then(({ data, error }) => {
       if (data) {

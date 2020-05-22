@@ -29,6 +29,7 @@ export const UiTask = ({ handle }) => {
   };
 
   const handleCancel = () => {
+    handle(true);
     dispatch({ type: UI_RESET });
     setTask("");
     setDate("");

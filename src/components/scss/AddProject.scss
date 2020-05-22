@@ -1,8 +1,19 @@
 @import "../../const.scss";
 
 .addProject {
+  margin: 0.5em 0px 1.5em -1px;
+  padding: 0.2em;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: $clr-color1;
   &__plus {
+    font-size: 1.4rem;
+    padding: 0px 6px;
+    margin-right: 4px;
   }
-  &__text {
+  &:hover,
+  &:focus {
+    background-color: white;
+    outline: none;
   }
 }

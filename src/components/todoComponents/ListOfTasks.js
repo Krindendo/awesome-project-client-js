@@ -8,11 +8,12 @@ export const ListOfTasks = ({ data }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
+    console.log("delete", data);
     dispatch(todoActions.deleteTask(data.id));
   };
   return (
     <li className="listOfTasks">
-      <hr />
+      <hr className="listOfTasks__hr" />
       <div
         className="listOfTasks__checkbox-holder"
         onClick={handleDelete}

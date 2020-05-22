@@ -5,9 +5,7 @@ import { ListOfTasks, AddTask } from "./index";
 import { helper, getTasksByProject } from "../../helpers";
 
 export const Tasks = () => {
-  const { tasks, projects, selectedProject } = useSelector(
-    (state) => state.todo
-  );
+  const { tasks, selectedProject } = useSelector((state) => state.todo);
   const { name } = selectedProject;
   let sortedTasks = getTasksByProject(tasks, selectedProject);
   let check = helper.isObjectEmpty(sortedTasks);

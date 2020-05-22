@@ -5,7 +5,7 @@ axios.defaults.baseURL =
   "https://europe-west1-awesomeproject1010.cloudfunctions.net/api";
 
 const login = (email, password) => {
-  let userData = { email: email, password: password };
+  let userData = { email, password };
   return axios
     .post("/login", userData)
     .then(({ data }) => {
@@ -16,9 +16,9 @@ const login = (email, password) => {
       localStorage.setItem("user", decodedToken);
       return { user: decodedToken };
     })
-    .catch((err) => {
-      console.log("err", err);
-      return { error: err };
+    .catch((error) => {
+      console.log("error", error);
+      return { error };
     });
 };
 const logout = () => {

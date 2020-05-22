@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./scss/TodoPage.scss";
 import Navbar from "../components/Navbar";
 import {
@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { UI_RESET } from "../redux/types";
 
 export const TodoPage = () => {
-  const [selectedProjectId, setSelectedProjectId] = useState();
   const ui_screen = useSelector((state) => state.ui.ui_screen);
   const { ui_grayScreen, ui_Project, ui_Edit, ui_Conform } = ui_screen;
   const dispatch = useDispatch();
@@ -39,8 +38,8 @@ export const TodoPage = () => {
       {ui_grayScreen && (
         <div className="todoPage__grid" onClick={disable}>
           {ui_Project && <UiProject />}
-          {ui_Edit && <UiEdit id={selectedProjectId} />}
-          {ui_Conform && <UiConform id={selectedProjectId} />}
+          {ui_Edit && <UiEdit />}
+          {ui_Conform && <UiConform />}
         </div>
       )}
       <Navbar activeLocation="todo" />

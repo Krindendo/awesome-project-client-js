@@ -6,14 +6,13 @@ const login = (email, password) => {
   return (dispatch) => {
     dispatch({ type: LOADING_UI });
 
-    userService.login(email, password).then((data) => {
-      console.log("data", data);
-
-      if (data.user) {
+    userService.login(email, password).then(({ user, error }) => {
+      console.log("data", user);
+      if (user) {
         dispatch({ type: UI_RESET });
         history.push("/home");
       } else {
-        dispatch({ type: SET_ERRORS, payload: data.error.response.data });
+        dispatch({ type: SET_ERRORS, payload: error.response.data });
       }
     });
   };

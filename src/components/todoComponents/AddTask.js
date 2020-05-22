@@ -9,19 +9,17 @@ export const AddTask = () => {
   };
   return (
     <div className="addTask">
-      <hr />
+      <hr className="addTask__hr" />
       {ui_Task && (
-        <div className="inTask">
+        <div
+          className="addTask__div"
+          onClick={() => handleClick(false)}
+          onKeyDown={() => handleClick(false)}
+          role="button"
+          tabIndex={0}
+        >
           <span className="plus">+</span>
-          <span
-            className="text"
-            onClick={() => handleClick(false)}
-            onKeyDown={() => handleClick(false)}
-            role="button"
-            tabIndex={0}
-          >
-            Add Task
-          </span>
+          <span className="text">Add Task</span>
         </div>
       )}
       {!ui_Task && <UiTask handle={handleClick} />}
