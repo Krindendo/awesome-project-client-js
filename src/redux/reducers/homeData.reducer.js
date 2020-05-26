@@ -2,7 +2,6 @@ import {
   LOAD_TAGS,
   LOAD_NOTES,
   SELECT_TAG,
-  SELECT_NOTE,
   SET_NOTE,
   UPDATE_NOTE,
   DELETE_NOTE,
@@ -11,7 +10,6 @@ const initialState = {
   tags: {},
   notes: {},
   selectedTag: 1,
-  selectedNote: null,
 };
 
 export const home = (state = initialState, action) => {
@@ -31,30 +29,23 @@ export const home = (state = initialState, action) => {
         ...state,
         selectedTag: action.payload,
       };
-    case SELECT_NOTE:
-      return {
-        ...state,
-        selectedNote: action.payload,
-      };
-
     case SET_NOTE:
+      console.log("action.payload", action.payload);
       return {
         ...state,
         notes: [...state.notes, action.payload],
       };
     case UPDATE_NOTE:
-      //Ovo proveriti
       const index1 = state.notes.findIndex(
-        (note) => note._id === action.payload._id
+        (note) => note.docId === action.payload.docId
       );
       state.notes[index1] = action.payload;
       return {
         ...state,
       };
     case DELETE_NOTE:
-      //Ovo proveriti
       const index2 = state.notes.findIndex(
-        (note) => note._id === action.payload
+        (note) => note.docId === action.payload
       );
       state.notes.splice(index2, 1);
       return {

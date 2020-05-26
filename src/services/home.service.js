@@ -7,6 +7,7 @@ const getTags = () => {
       return { data };
     })
     .catch((error) => {
+      console.log("error", error.response);
       return { error };
     });
 };
@@ -17,36 +18,51 @@ const getNotes = () => {
       return { data };
     })
     .catch((error) => {
+      console.log("error", error.response);
       return { error };
     });
 };
-const putNote = (newNote) => {
+const putNote = (_newNote) => {
+  let newNote = {
+    body: _newNote.text,
+    section: _newNote.section,
+    title: _newNote.title,
+  };
   return axios
-    .post("/note", newNote)
+    .post("/notes", newNote)
     .then(({ data }) => {
       return { data };
     })
     .catch((error) => {
+      console.log("error", error.response);
       return { error };
     });
 };
-const updateNote = (updateNote) => {
+const updateNote = (_updateNote) => {
+  let updateNote = {
+    body: _updateNote.text,
+    section: _updateNote.section,
+    title: _updateNote.title,
+  };
+  console.log("update", updateNote);
   return axios
-    .patch(`/updateNote/${updateNote.docId}`, updateNote)
+    .patch(`/notes/${_updateNote.docId}`, updateNote)
     .then(({ data }) => {
       return { data };
     })
     .catch((error) => {
+      console.log("error", error.response);
       return { error };
     });
 };
 const deleteNote = (noteId) => {
   return axios
-    .delete(`/note/${noteId}`)
+    .delete(`/notes/${noteId}`)
     .then(({ data }) => {
       return { data };
     })
     .catch((error) => {
+      console.log("error", error.response);
       return { error };
     });
 };

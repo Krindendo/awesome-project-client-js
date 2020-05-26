@@ -1,1 +1,64 @@
 @import "../../const.scss";
+
+.notePage {
+  padding: 3em 0;
+  height: 100%;
+  &__upperPart {
+    margin: 2em 1em 1em 2em;
+    display: flex;
+    &__title {
+      margin-right: 2em;
+      &__p {
+        display: inline-block;
+        font-size: 1.3rem;
+        margin-right: 0.5em;
+      }
+      &__input {
+        display: inline-block;
+        font-size: 1.3rem;
+        border: none;
+        border-bottom: 1px solid black;
+        background-color: inherit;
+      }
+    }
+    &__saving {
+      font-size: 1.3rem;
+    }
+    &__delete {
+      padding: 0.4em 1em;
+      border-radius: 30px;
+      background-color: $clr-primary;
+      box-shadow: $shadowBox_button;
+      margin-left: auto;
+      margin-right: 2em;
+      cursor: pointer;
+      transition: background 250ms ease-in-out;
+      .btn-delete {
+        border: none;
+        background-color: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: color 250ms ease-in-out;
+        &:focus {
+          outline: none;
+        }
+      }
+      &:hover {
+        background-color: $clr-color2;
+        .btn-delete {
+          color: $clr-primary;
+        }
+      }
+    }
+  }
+  &__lowerPart {
+    height: 96%;
+    .quill {
+      background-color: white;
+      height: 87%;
+      .ql-editor {
+        background-color: white;
+      }
+    }
+  }
+}

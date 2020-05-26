@@ -26,7 +26,6 @@ export const SELECT_PROJECT = "SELECT_PROJECT";
 export const LOAD_TAGS = "LOAD_TAGS";
 export const LOAD_NOTES = "LOAD_NOTES";
 export const SELECT_TAG = "SELECT_TAG";
-export const SELECT_NOTE = "SELECT_NOTE";
 export const SET_NOTE = "SET_NOTE";
 export const UPDATE_NOTE = "UPDATE_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";

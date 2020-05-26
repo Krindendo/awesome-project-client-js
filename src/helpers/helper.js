@@ -1,5 +1,18 @@
 import moment from "moment";
 
+function debounceEvent(func, wait) {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
+}
+
 function removeHTMLTags(str) {
   return str.replace(/<[^>]*>?/gm, "");
 }
@@ -19,6 +32,7 @@ function isObjectEmpty(obj) {
 }
 
 export const helper = {
+  debounceEvent,
   removeHTMLTags,
   changeDate,
   isObjectEmpty,
