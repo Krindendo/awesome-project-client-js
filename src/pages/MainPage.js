@@ -8,7 +8,7 @@ import ListSection from "../components/mainComponents/ListSection";
 import { FaPlus } from "react-icons/fa";
 import { SELECT_TAG } from "../redux/types";
 
-export const MainPage = () => {
+const MainPage = () => {
   const [grayScreen, setGrayScreen] = useState(false);
   const [selectedTag, setSelectedTag] = useState(0);
   const { tags, notes } = useSelector((state) => state.home);
@@ -111,3 +111,5 @@ export const MainPage = () => {
     </div>
   );
 };
+
+export default MainPage;

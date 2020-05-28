@@ -1,7 +1,7 @@
 import React from "react";
 import "./scss/OldPage.scss";
 
-export const OldPage = () => {
+const OldPage = () => {
   return (
     <div className="oldContainer">
       <div className="text">
@@ -32,3 +32,5 @@ export const OldPage = () => {
     </div>
   );
 };
+
+export default OldPage;

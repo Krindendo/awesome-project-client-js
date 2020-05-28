@@ -12,7 +12,7 @@ import { todoActions } from "../redux/actions/todoData.action";
 import { useSelector, useDispatch } from "react-redux";
 import { UI_RESET } from "../redux/types";
 
-export const TodoPage = () => {
+const TodoPage = () => {
   const ui_screen = useSelector((state) => state.ui.ui_screen);
   const { ui_grayScreen, ui_Project, ui_Edit, ui_Conform } = ui_screen;
   const dispatch = useDispatch();
@@ -52,3 +52,5 @@ export const TodoPage = () => {
     </div>
   );
 };
+
+export default TodoPage;

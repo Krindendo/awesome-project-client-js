@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import "./App.scss";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-import { history, AuthRoute } from "../helpers";
-import {
-  LandingPage,
-  MainPage,
-  NotePage,
-  OldPage,
-  TodoPage,
-  CloudPage,
-} from "../pages";
+import AuthRoute from "../helpers/AuthRoute";
+import { history } from "../helpers";
+const LandingPage = lazy(() => import("../pages/LandingPage"));
+const MainPage = lazy(() => import("../pages/MainPage"));
+const NotePage = lazy(() => import("../pages/NotePage"));
+const TodoPage = lazy(() => import("../pages/TodoPage"));
+const CloudPage = lazy(() => import("../pages/CloudPage"));
+const OldPage = lazy(() => import("../pages/OldPage"));
 
 export const App = () => {
   useEffect(() => {
@@ -21,15 +20,17 @@ export const App = () => {
   return (
     <div className="App">
       <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/home" component={MainPage} />
-          <Route exact path="/home/:docId" component={NotePage} />
-          <Route exact path="/todo" component={TodoPage} />
-          <Route exact path="/cloud" component={CloudPage} />
-          <Route exact path="/old" component={OldPage} />
-          <Redirect from="*" to="/" />
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <AuthRoute exact path="/home" component={MainPage} />
+            <AuthRoute exact path="/home/:docId" component={NotePage} />
+            <AuthRoute exact path="/todo" component={TodoPage} />
+            <AuthRoute exact path="/cloud" component={CloudPage} />
+            <AuthRoute exact path="/old" component={OldPage} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Suspense>
       </Router>
     </div>
   );

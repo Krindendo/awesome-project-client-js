@@ -1,70 +1,44 @@
 import axios from "axios";
 
-const getTags = () => {
-  return axios
-    .get("/tags")
-    .then(({ data }) => {
-      return { data };
-    })
-    .catch((error) => {
-      console.log("error", error.response);
-      return { error };
-    });
+const getTags = async () => {
+  try {
+    const { data } = await axios.get("/tags");
+    return data;
+  } catch (error) {
+    console.log("error", error.response);
+  }
 };
-const getNotes = () => {
-  return axios
-    .get("/notes")
-    .then(({ data }) => {
-      return { data };
-    })
-    .catch((error) => {
-      console.log("error", error.response);
-      return { error };
-    });
+const getNotes = async () => {
+  try {
+    const { data } = await axios.get("/notes");
+    return data;
+  } catch (error) {
+    console.log("error", error.response);
+  }
 };
-const putNote = (_newNote) => {
-  let newNote = {
-    body: _newNote.text,
-    section: _newNote.section,
-    title: _newNote.title,
-  };
-  return axios
-    .post("/notes", newNote)
-    .then(({ data }) => {
-      return { data };
-    })
-    .catch((error) => {
-      console.log("error", error.response);
-      return { error };
-    });
+const putNote = async (newNote) => {
+  try {
+    const { data } = await axios.post("/notes", newNote);
+    return data;
+  } catch (error) {
+    console.log("error", error.response);
+  }
 };
-const updateNote = (_updateNote) => {
-  let updateNote = {
-    body: _updateNote.text,
-    section: _updateNote.section,
-    title: _updateNote.title,
-  };
-  console.log("update", updateNote);
-  return axios
-    .patch(`/notes/${_updateNote.docId}`, updateNote)
-    .then(({ data }) => {
-      return { data };
-    })
-    .catch((error) => {
-      console.log("error", error.response);
-      return { error };
-    });
+const updateNote = async (updateNote) => {
+  try {
+    const { data } = axios.patch(`/notes/${updateNote.docId}`, updateNote);
+    return data;
+  } catch (error) {
+    console.log("error", error.response);
+  }
 };
-const deleteNote = (noteId) => {
-  return axios
-    .delete(`/notes/${noteId}`)
-    .then(({ data }) => {
-      return { data };
-    })
-    .catch((error) => {
-      console.log("error", error.response);
-      return { error };
-    });
+const deleteNote = async (noteId) => {
+  try {
+    const { data } = await axios.delete(`/notes/${noteId}`);
+    return data;
+  } catch (error) {
+    console.log("error", error.response);
+  }
 };
 
 export const homeService = {

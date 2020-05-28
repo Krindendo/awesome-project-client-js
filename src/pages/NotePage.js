@@ -8,7 +8,7 @@ import { homeActions } from "../redux/actions/homeData.action";
 import Navbar from "../components/Navbar";
 import {} from "../redux/types";
 
-export const NotePage = () => {
+const NotePage = () => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [note, setNote] = useState({});
@@ -122,3 +122,5 @@ export const NotePage = () => {
     </div>
   );
 };
+
+export default NotePage;

@@ -4,79 +4,38 @@ import {
   SET_NOTE,
   UPDATE_NOTE,
   DELETE_NOTE,
-  SET_ERRORS,
 } from "../types";
 import { homeService } from "../../services";
 
-const getTags = () => {
-  return (dispatch) => {
-    homeService.getTags().then(({ data, error }) => {
-      if (data) {
-        dispatch({ type: LOAD_TAGS, payload: data });
-      } else {
-        dispatch({
-          type: SET_ERRORS,
-          payload: { getTags: error.response.date },
-        });
-      }
-    });
-  };
+const getTags = () => async (dispatch) => {
+  const data = await homeService.getTags();
+  dispatch({ type: LOAD_TAGS, payload: data });
 };
-const getNotes = () => {
-  return (dispatch) => {
-    homeService.getNotes().then(({ data, error }) => {
-      if (data) {
-        dispatch({ type: LOAD_NOTES, payload: data });
-      } else {
-        dispatch({
-          type: SET_ERRORS,
-          payload: { getNotes: error.response.date },
-        });
-      }
-    });
-  };
+const getNotes = () => async (dispatch) => {
+  const data = await homeService.getNotes();
+  dispatch({ type: LOAD_NOTES, payload: data });
 };
-const putNote = (newNote) => {
-  return (dispatch) => {
-    homeService.putNote(newNote).then(({ data, error }) => {
-      if (data) {
-        dispatch({ type: SET_NOTE, payload: data });
-      } else {
-        dispatch({
-          type: SET_ERRORS,
-          payload: { putNote: error.response.date },
-        });
-      }
-    });
+const putNote = (_newNote) => async (dispatch) => {
+  let newNote = {
+    body: _newNote.text,
+    section: _newNote.section,
+    title: _newNote.title,
   };
+  const data = await homeService.putNote(newNote);
+  if (data !== null) dispatch({ type: SET_NOTE, payload: data });
 };
-const updateNote = (updateNote) => {
-  return (dispatch) => {
-    homeService.updateNote(updateNote).then(({ data, error }) => {
-      if (data) {
-        dispatch({ type: UPDATE_NOTE, payload: updateNote });
-      } else {
-        dispatch({
-          type: SET_ERRORS,
-          payload: { updateNote: error.response.date },
-        });
-      }
-    });
+const updateNote = (_updateNote) => async (dispatch) => {
+  let updateNote = {
+    body: _updateNote.text,
+    section: _updateNote.section,
+    title: _updateNote.title,
   };
+  await homeService.updateNote(updateNote);
+  dispatch({ type: UPDATE_NOTE, payload: updateNote });
 };
-const deleteNote = (noteId) => {
-  return (dispatch) => {
-    homeService.deleteNote(noteId).then(({ data, error }) => {
-      if (data) {
-        dispatch({ type: DELETE_NOTE, payload: noteId });
-      } else {
-        dispatch({
-          type: SET_ERRORS,
-          payload: { deleteNote: error.response.date },
-        });
-      }
-    });
-  };
+const deleteNote = (noteId) => async (dispatch) => {
+  await homeService.deleteNote(noteId);
+  dispatch({ type: DELETE_NOTE, payload: noteId });
 };
 
 export const homeActions = {

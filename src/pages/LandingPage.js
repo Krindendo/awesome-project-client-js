@@ -5,7 +5,7 @@ import { userActions } from "../redux/actions/user.action";
 import { UI_RESET } from "../redux/types";
 import { FaSpinner } from "react-icons/fa";
 
-export const LandingPage = () => {
+const LandingPage = () => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -144,3 +144,5 @@ export const LandingPage = () => {
     </div>
   );
 };
+
+export default LandingPage;

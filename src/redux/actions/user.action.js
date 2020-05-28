@@ -2,38 +2,33 @@ import { LOADING_UI, UI_RESET, SET_ERRORS, LOGOUT, GET_NICK } from "../types";
 import { userService } from "../../services";
 import { history } from "../../helpers";
 
-const login = (email, password) => {
-  return (dispatch) => {
-    dispatch({ type: LOADING_UI });
-
-    userService.login(email, password).then(({ user, error }) => {
-      console.log("data", user);
-      if (user) {
-        dispatch({ type: UI_RESET });
-        history.push("/home");
-      } else {
-        dispatch({ type: SET_ERRORS, payload: error.response.data });
-      }
-    });
-  };
+const login = (email, password) => async (dispatch) => {
+  let userData = { email, password };
+  dispatch({ type: LOADING_UI });
+  const { user } = await userService.login(userData);
+  console.log("user", user);
+  dispatch({ type: UI_RESET });
+  history.push("/home");
 };
-const logout = () => {
-  userService.logout();
-  return (dispatch) => dispatch({ type: LOGOUT });
+const logout = () => async (dispatch) => {
+  await userService.logout();
+  dispatch({ type: LOGOUT });
 };
-const login_anonymous = () => {
-  console.log("Anonymous Login");
+const login_anonymous = () => async (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  const { user } = await userService.login_anonymous();
+  console.log("user", user);
+  dispatch({ type: UI_RESET });
 };
-const getUser = () => {
+const getUser = () => async (dispatch) => {
   let nick = userService.getUserNick();
   return (dispatch) => dispatch({ type: GET_NICK, payload: nick });
 };
-const signup = () => {
-  return (dispatch) =>
-    dispatch({
-      type: SET_ERRORS,
-      payload: { signup: "Sign up is not posible" },
-    });
+const signup = () => (dispatch) => {
+  dispatch({
+    type: SET_ERRORS,
+    payload: { signup: "Sign up is not posible" },
+  });
 };
 
 export const userActions = {
