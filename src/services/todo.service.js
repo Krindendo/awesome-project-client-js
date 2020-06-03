@@ -3,10 +3,10 @@ import axios from "axios";
 const loadProjects = async (priority) => {
   try {
     const { data } = await axios.get("/projects");
-    return { data };
+    return data;
   } catch (error) {
     console.log("error", error.response.date);
-    return { error };
+    return {};
   }
 };
 const editProject = () => {};
@@ -33,6 +33,7 @@ const loadTasks = async () => {
     return data;
   } catch (error) {
     console.log("error", error.response.date);
+    return {};
   }
 };
 const saveTask = async (newTask) => {

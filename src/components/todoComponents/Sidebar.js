@@ -45,8 +45,8 @@ export const Sidebar = () => {
           </span>
           <p className="sidebar__mid__title__text">Projects</p>
         </div>
-        {showProjects ? <FoldedProjects /> : null}
-        {showProjects ? <AddProject /> : null}
+        {showProjects && <FoldedProjects />}
+        {showProjects && <AddProject />}
       </div>
       <div className="sidebar__mid">
         <hr className="hr" />
@@ -68,7 +68,7 @@ export const Sidebar = () => {
           </span>
           <p className="sidebar__mid__title__text">Filters</p>
         </div>
-        {showFilter ? <FoldedFilters /> : null}
+        {showFilter && <FoldedFilters />}
       </div>
     </div>
   );

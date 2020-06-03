@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./scss/Navbar.scss";
+import { useSelector } from "react-redux";
 
 const Navbar = ({ activeLocation }) => {
+  const nick = useSelector((state) => state.users.nick);
   return (
     <header className="navbar">
       <nav className="nav">
@@ -49,7 +51,7 @@ const Navbar = ({ activeLocation }) => {
         </ul>
       </nav>
       <div className="message">
-        Welcome back, <span className="message__name">Krindendo</span>
+        Welcome back, <span className="message__name">{nick}</span>
       </div>
     </header>
   );

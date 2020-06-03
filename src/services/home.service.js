@@ -6,6 +6,7 @@ const getTags = async () => {
     return data;
   } catch (error) {
     console.log("error", error.response);
+    return [];
   }
 };
 const getNotes = async () => {
@@ -14,6 +15,7 @@ const getNotes = async () => {
     return data;
   } catch (error) {
     console.log("error", error.response);
+    return [];
   }
 };
 const putNote = async (newNote) => {

@@ -3,14 +3,31 @@ import "./scss/CloudPage.scss";
 import Navbar from "../components/Navbar";
 import DragDrop from "../components/DragDrop";
 import TableItem from "../components/TableItem";
+import { useDispatch, useSelector } from "react-redux";
+import { cloudActions } from "../redux/actions/cloudData.action";
+import { helper } from "../helpers";
 
 const CloudPage = () => {
+  const files = useSelector((state) => state.cloud.files);
+  var formData = new FormData();
+  const dispatch = useDispatch();
   const handleUpload = (event) => {
-    console.log(event.target.files[0]);
+    formData.append("file", event.target.files[0]);
+    dispatch(cloudActions.uploadFile(formData));
   };
   const handleDropfile = (file) => {
-    console.log(file);
+    formData.append("file", file[file.length - 1]);
+    dispatch(cloudActions.uploadFile(formData));
   };
+  const handleDelete = (fileId) => {
+    dispatch(cloudActions.deleteFile(fileId));
+  };
+  const handleEdit = (event) => {
+    console.log("Edit button clicked");
+  };
+  useEffect(() => {
+    dispatch(cloudActions.getListOfFiles());
+  }, []);
   return (
     <div className="cloudPage">
       <Navbar activeLocation="cloud" />
@@ -49,24 +66,19 @@ const CloudPage = () => {
               </tr>
             </thead>
             <tbody className="grid__table__tbody">
-              <TableItem
-                name="Nesto"
-                location="Zanimljivo"
-                date="01.05.2020"
-                size="340kb"
-              />
-              <TableItem
-                name="Nesto"
-                location="Zanimljivo"
-                date="01.05.2020"
-                size="340kb"
-              />
-              <TableItem
-                name="Nesto"
-                location="Zanimljivo"
-                date="01.05.2020"
-                size="340kb"
-              />
+              {!!files.length &&
+                files.map((file) => (
+                  <TableItem
+                    key={file.docId}
+                    docId={file.docId}
+                    name={file.name}
+                    location={file.path}
+                    date={helper.changeDate(file.created)}
+                    size={file.size}
+                    handleDelete={handleDelete}
+                    handleEdit={handleEdit}
+                  />
+                ))}
             </tbody>
           </table>
         </div>
@@ -80,3 +92,12 @@ export default CloudPage;
 // https://programmingwithmosh.com/javascript/react-file-upload-proper-server-side-nodejs-easy/
 // https://www.freepik.com/premium-psd/file-downloader-application_5841449.htm
 // https://codepen.io/PerfectIsShit/pen/zogMXP Loading
+
+/* 
+  <TableItem
+    name="Nesto"
+    location="Zanimljivo"
+    date="01.05.2020"
+    size="340kb"
+  />
+*/

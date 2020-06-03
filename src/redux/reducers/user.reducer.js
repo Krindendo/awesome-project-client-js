@@ -1,7 +1,7 @@
 import { GET_NICK, LOGOUT } from "../types";
 
 const initialState = {
-  nick: "",
+  nick: "Anonymous",
 };
 
 export const users = (state = initialState, action) => {

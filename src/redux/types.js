@@ -31,3 +31,6 @@ export const UPDATE_NOTE = "UPDATE_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";
 
 //Cloud reducer types
+export const LOAD_FILES = "LOAD_FILES";
+export const SAVE_FILE = "SAVE_FILE";
+export const DELETE_FILE = "DELETE_FILE";

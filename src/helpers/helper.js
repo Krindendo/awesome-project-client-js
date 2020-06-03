@@ -28,7 +28,11 @@ function changeDate(date) {
 }
 
 function isObjectEmpty(obj) {
+  if (obj === undefined) return true;
   return Object.keys(obj).length === 0 && obj.constructor === Object;
+
+  // Object = [] !!Object
+  // Array = {} !!Array.length
 }
 
 export const helper = {

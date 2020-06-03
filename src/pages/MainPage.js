@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./scss/MainPage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { homeActions } from "../redux/actions/homeData.action";
-import { history, helper } from "../helpers";
+import { history } from "../helpers";
 import Navbar from "../components/Navbar";
 import ListSection from "../components/mainComponents/ListSection";
 import { FaPlus } from "react-icons/fa";
@@ -13,8 +13,6 @@ const MainPage = () => {
   const [selectedTag, setSelectedTag] = useState(0);
   const { tags, notes } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  var isTagsEmpty = helper.isObjectEmpty(tags);
-  var isNotesEmpty = helper.isObjectEmpty(notes);
   const getNotesbyTags = (id) => {
     return notes.filter((note) => note.section === id);
   };
@@ -45,8 +43,8 @@ const MainPage = () => {
   return (
     <div className="mainPage">
       <Navbar activeLocation="home" />
-      {!isTagsEmpty &&
-        !isNotesEmpty &&
+      {!!tags.length &&
+        !!notes.length &&
         tags.map((tag) => (
           <ListSection
             key={tag._id}
@@ -71,7 +69,7 @@ const MainPage = () => {
             <p className="grid__notes__title">Select Project</p>
             <form className="form" onSubmit={hadnleSubmit}>
               <ul className="form__list">
-                {!isTagsEmpty &&
+                {!!tags.length &&
                   tags.map((tag) => (
                     <li key={tag._id} className="form__list__item">
                       <input

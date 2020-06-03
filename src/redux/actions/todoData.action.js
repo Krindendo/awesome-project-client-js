@@ -9,9 +9,8 @@ import {
 import { todoService } from "../../services";
 
 const loadProjects = () => async (dispatch) => {
-  const { data, error } = await todoService.loadProjects();
+  const data = await todoService.loadProjects();
   dispatch({ type: LOAD_PROJECTS, payload: data });
-  if (error) dispatch({ type: LOAD_PROJECTS, payload: {} });
 };
 const saveProject = (newProject) => async (dispatch) => {
   const data = await todoService.saveProject(newProject);
@@ -32,7 +31,6 @@ const saveTask = (newTask) => async (dispatch) => {
   dispatch({ type: SAVE_TASK, payload: data.newTask });
 };
 const deleteTask = (taskId) => async (dispatch) => {
-  //Ne radi
   await todoService.deleteTask(taskId);
   dispatch({ type: DELETE_TASK, payload: taskId });
 };

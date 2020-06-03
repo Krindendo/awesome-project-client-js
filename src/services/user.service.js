@@ -19,21 +19,20 @@ const logout = () => {
   delete axios.defaults.headers.common["userid"];
 };
 const login_anonymous = async () => {
-  console.log("Login anonymously");
   try {
-    const { data } = axios.get("/login");
+    const { data } = await axios.post("/anonimus");
     let decodedToken = saveUser(data);
+    console.log("anonimus", decodedToken);
     return { user: decodedToken };
   } catch (error) {
-    console.log("error", error.response);
+    console.log("error", error);
   }
 };
 const getUserNick = () => {
-  return "krindendo";
-  // return axios
-  //   .get("/home")
-  //   .then(({ data }) => {})
-  //   .catch((err) => {});
+  const user = localStorage.getItem("user");
+  console.log("user", user.provider_id);
+  if (user.provider_id === "anonymous") return "Anonymous";
+  return "Krindendo";
 };
 
 const saveUser = (_data) => {

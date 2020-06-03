@@ -1,6 +1,7 @@
 import moment from "moment";
 
 export const getTasksByProject = (tasks, selectedProject) => {
+  if (tasks === undefined) return;
   if (selectedProject.id === "") {
     let today = moment().format("YYYY/MM/DD");
     let tomorrow = moment().add(1, "days").format("YYYY/MM/DD");

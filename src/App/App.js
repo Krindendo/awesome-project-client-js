@@ -20,7 +20,13 @@ export const App = () => {
   return (
     <div className="App">
       <Router history={history}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="loading">
+              <p>Loading...</p>
+            </div>
+          }
+        >
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <AuthRoute exact path="/home" component={MainPage} />
@@ -35,17 +41,3 @@ export const App = () => {
     </div>
   );
 };
-
-//TODO: https://reactjs.org/docs/code-splitting.html
-
-/*
-  <Switch>
-    <Route exact path="/" component={LandingPage} />
-    <AuthRoute exact path="/home" component={MainPage} />
-    <AuthRoute exact path="/home/:docId" component={NotePage} />
-    <AuthRoute exact path="/todo" component={TodoPage} />
-    <AuthRoute exact path="/cloud" component={CloudPage} />
-    <AuthRoute exact path="/old" component={OldPage} />
-    <Redirect from="*" to="/" />
-  </Switch>
-*/

@@ -5,9 +5,28 @@
   border-radius: 3px;
   &__td {
     padding: 1em;
+    &__dropdown {
+      position: relative;
+      overflow: hidden;
+      svg {
+        cursor: pointer;
+      }
+      &__content {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        &__button {
+          display: block;
+        }
+      }
+    }
   }
   .disable {
     display: none;
+  }
+  .disable-button {
+    color: gray;
+    cursor: default;
   }
   @include mq(500px) {
     .disable {
@@ -16,8 +35,5 @@
   }
   &__td:last-child {
     text-align: end;
-    svg {
-      cursor: pointer;
-    }
   }
 }
