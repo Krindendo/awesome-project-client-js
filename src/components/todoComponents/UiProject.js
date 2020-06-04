@@ -43,7 +43,9 @@ export const UiProject = () => {
         </div>
         <div className="ui_project__form__priority">
           <p>Project priority</p>
-          <button className="dropbtn">{priority}</button>
+          <button className="dropbtn" type="button">
+            {priority}
+          </button>
           <div className="ui_project__form__priority__dropdown">
             <ul className="dropdown__list">
               <li className="dropdown__list__item">
@@ -100,6 +102,7 @@ export const UiProject = () => {
           className="ui_project__form__cancel"
           onClick={handleCancel}
           onKeyDown={handleCancel}
+          type="button"
         >
           Cancel
         </button>

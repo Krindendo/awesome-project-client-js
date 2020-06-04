@@ -24,7 +24,11 @@ const TableItem = ({
       <td className="item__td">
         <div className="item__td__dropdown" onClick={handleDropBox}>
           <FaEllipsisV />
-          <div className={active ? "item__td__dropdown__content" : "disable"}>
+          <div
+            className={
+              active ? "item__td__dropdown__content" : "dropDown-disable"
+            }
+          >
             <button
               className="item__td__dropdown__content__button"
               onClick={() => handleDelete(docId)}

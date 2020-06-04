@@ -29,6 +29,7 @@ const updateNote = (_updateNote) => async (dispatch) => {
     body: _updateNote.text,
     section: _updateNote.section,
     title: _updateNote.title,
+    docId: _updateNote.docId,
   };
   await homeService.updateNote(updateNote);
   dispatch({ type: UPDATE_NOTE, payload: updateNote });

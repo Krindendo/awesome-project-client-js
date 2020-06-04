@@ -18,13 +18,13 @@ function removeHTMLTags(str) {
 }
 
 function changeDate(date) {
+  let today = moment();
   let time = moment(date, "YYYY/MM/DD");
   let time1 = moment().subtract(1, "months");
-  if (time <= time1) {
+  if (time.isSame(today, "day")) return "Today";
+  if (time.isAfter(time1, "day"))
     return moment(date, "YYYY/MM/DD").format("DD.MM.YYYY");
-  } else {
-    return moment(date, "YYYY/MM/DD").fromNow();
-  }
+  return moment(date, "YYYY/MM/DD").fromNow();
 }
 
 function isObjectEmpty(obj) {

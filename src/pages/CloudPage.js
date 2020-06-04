@@ -53,21 +53,21 @@ const CloudPage = () => {
               </p>
             </div>
           </section>
-          <table className="grid__table">
-            <thead className="grid__table__thead">
-              <tr className="grid__table__thead__tr">
-                <th className="grid__table__thead__tr__th">File name</th>
-                <th className="grid__table__thead__tr__th">Location</th>
-                <th className="grid__table__thead__tr__th disable">Added</th>
-                <th className="grid__table__thead__tr__th disable">
-                  File size
-                </th>
-                <th className="grid__table__thead__tr__th"></th>
-              </tr>
-            </thead>
-            <tbody className="grid__table__tbody">
-              {!!files.length &&
-                files.map((file) => (
+          {!!files.length && (
+            <table className="grid__table">
+              <thead className="grid__table__thead">
+                <tr className="grid__table__thead__tr">
+                  <th className="grid__table__thead__tr__th">File name</th>
+                  <th className="grid__table__thead__tr__th">Location</th>
+                  <th className="grid__table__thead__tr__th disable">Added</th>
+                  <th className="grid__table__thead__tr__th disable">
+                    File size
+                  </th>
+                  <th className="grid__table__thead__tr__th"></th>
+                </tr>
+              </thead>
+              <tbody className="grid__table__tbody">
+                {files.map((file) => (
                   <TableItem
                     key={file.docId}
                     docId={file.docId}
@@ -79,8 +79,9 @@ const CloudPage = () => {
                     handleEdit={handleEdit}
                   />
                 ))}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          )}
         </div>
       </DragDrop>
     </div>

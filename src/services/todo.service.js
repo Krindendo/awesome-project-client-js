@@ -6,7 +6,7 @@ const loadProjects = async (priority) => {
     return data;
   } catch (error) {
     console.log("error", error.response.date);
-    return {};
+    return [];
   }
 };
 const editProject = () => {};
@@ -17,7 +17,7 @@ const saveProject = async (newProject) => {
     const { data } = await axios.post("/project", newProject);
     return data;
   } catch (error) {
-    console.log("error", error.response.date);
+    console.log("error", error.response);
   }
 };
 const deleteProject = async (projectId) => {
@@ -33,7 +33,7 @@ const loadTasks = async () => {
     return data;
   } catch (error) {
     console.log("error", error.response.date);
-    return {};
+    return [];
   }
 };
 const saveTask = async (newTask) => {
@@ -44,9 +44,9 @@ const saveTask = async (newTask) => {
     console.log("error", error.response.date);
   }
 };
-const deleteTask = (taskId) => {
+const deleteTask = (projectId) => {
   try {
-    const { data } = axios.delete(`/task/${taskId}`);
+    const { data } = axios.delete(`/task/${projectId}`);
     return data;
   } catch (error) {
     console.log("error", error.response.date);

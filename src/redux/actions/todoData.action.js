@@ -17,8 +17,8 @@ const saveProject = (newProject) => async (dispatch) => {
   dispatch({ type: SAVE_PROJECT, payload: data });
 };
 const deleteProject = (projectId) => async (dispatch) => {
-  await todoService.deleteProject(projectId);
   dispatch({ type: DELETE_PROJECT, payload: projectId });
+  await todoService.deleteProject(projectId);
 };
 
 const loadTasks = () => async (dispatch) => {

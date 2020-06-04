@@ -7,7 +7,6 @@
     padding: 1em;
     &__dropdown {
       position: relative;
-      overflow: hidden;
       svg {
         cursor: pointer;
       }
@@ -15,8 +14,17 @@
         display: block;
         position: absolute;
         z-index: 1;
+        left: 0em;
+        top: 2em;
+        background-color: white;
+        width: 100px;
+        padding: 1em;
+        border-radius: 10px;
+        box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1),
+          0 0 10px 5px rgba(0, 0, 0, 0.15), 0 0 2px 0px rgba(0, 0, 0, 0.2);
         &__button {
           display: block;
+          margin-bottom: 0.5em;
         }
       }
     }
@@ -24,9 +32,13 @@
   .disable {
     display: none;
   }
+  .dropDown-disable {
+    display: none;
+  }
   .disable-button {
     color: gray;
     cursor: default;
+    margin: 0;
   }
   @include mq(500px) {
     .disable {

@@ -18,7 +18,6 @@ const NotePage = () => {
   const dispatch = useDispatch();
   let pathname = history.location.pathname.split("/");
   let docId = pathname[pathname.length - 1];
-
   const handleTitle = (event) => {
     setTitle(event.target.value);
   };
