@@ -12,6 +12,7 @@ const NotePage = () => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [note, setNote] = useState({});
+  const [length, setLength] = useState(0);
   const [isNewNote, setIsNewNote] = useState(true);
   const [saving, setSaving] = useState(false);
   const { notes, selectedTag } = useSelector((state) => state.home);
@@ -59,8 +60,16 @@ const NotePage = () => {
       }
       setIsNewNote(false);
       setNote(findNote(docId));
+      setLength(notes.length);
     }
   }, []);
+  useEffect(() => {
+    if (note.docId === "newnote" && length + 1 === notes.length) {
+      let { docId, created } = notes[notes.length - 1];
+      setNote({ section: selectedTag, docId, created });
+      return;
+    }
+  }, [notes]);
 
   useEffect(() => {
     if (docId !== "newnote" && !helper.isObjectEmpty(note)) {
@@ -70,21 +79,19 @@ const NotePage = () => {
   }, [note]);
 
   useEffect(() => {
+    //Ovo ne valja
     if (isNewNote) {
       if (text.trim() === "" && title.trim() === "") return;
       dispatch(homeActions.putNote({ text, title, section: selectedTag }));
       setIsNewNote(false);
     } else {
-      if (note.docId === "newnote") {
-        setNote({ section: selectedTag, docId: notes[notes.length - 1].docId });
-        return;
-      }
+      if (note.docId === "newnote") return;
       if (note.body !== text) {
         setSaving(true);
         debounce(text, title, note.section, note.docId);
       }
     }
-  }, [text]);
+  }, [text, title]);
 
   return (
     <div className="notePage">
@@ -100,7 +107,7 @@ const NotePage = () => {
           />
         </div>
         <p className="notePage__upperPart__saving">
-          {saving ? "Saving..." : "Saved"}
+          {note.docId !== "newnote" ? (saving ? "Saving..." : "Saved") : ""}
         </p>
         {!isNewNote && (
           <div className="notePage__upperPart__delete">

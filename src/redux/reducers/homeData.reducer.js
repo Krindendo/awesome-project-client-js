@@ -30,7 +30,6 @@ export const home = (state = initialState, action) => {
         selectedTag: action.payload,
       };
     case SET_NOTE:
-      console.log("action.payload", action.payload);
       return {
         ...state,
         notes: [...state.notes, action.payload],

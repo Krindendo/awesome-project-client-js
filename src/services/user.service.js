@@ -22,7 +22,6 @@ const login_anonymous = async () => {
   try {
     const { data } = await axios.post("/anonimus");
     let decodedToken = saveUser(data);
-    console.log("anonimus", decodedToken);
     return { user: decodedToken };
   } catch (error) {
     console.log("error", error);
