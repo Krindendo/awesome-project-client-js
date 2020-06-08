@@ -13,9 +13,7 @@ const MainPage = () => {
   const [selectedTag, setSelectedTag] = useState(0);
   const { tags, notes } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  const getNotesbyTags = (id) => {
-    return notes.filter((note) => note.section === id);
-  };
+  const getNotesbyTags = (id) => notes.filter((note) => note.section === id);
 
   const hadnleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +35,7 @@ const MainPage = () => {
   };
 
   useEffect(() => {
+    if (Object.keys(notes).length !== 0) return;
     dispatch(homeActions.getTags());
     dispatch(homeActions.getNotes());
   }, []);

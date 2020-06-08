@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./scss/CloudPage.scss";
 import Navbar from "../components/Navbar";
 import DragDrop from "../components/DragDrop";

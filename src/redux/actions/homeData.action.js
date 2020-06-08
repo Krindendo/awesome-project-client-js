@@ -17,9 +17,9 @@ const getNotes = () => async (dispatch) => {
 };
 const putNote = (_newNote) => async (dispatch) => {
   let newNote = {
-    body: _newNote.text,
-    section: _newNote.section,
+    body: _newNote.body,
     title: _newNote.title,
+    section: _newNote.section,
   };
   const data = await homeService.putNote(newNote);
   if (data !== null) dispatch({ type: SET_NOTE, payload: data });
@@ -31,8 +31,8 @@ const updateNote = (_updateNote) => async (dispatch) => {
     title: _updateNote.title,
     docId: _updateNote.docId,
   };
-  await homeService.updateNote(updateNote);
-  dispatch({ type: UPDATE_NOTE, payload: updateNote });
+  const data = await homeService.updateNote(updateNote);
+  dispatch({ type: UPDATE_NOTE, payload: data });
 };
 const deleteNote = (noteId) => async (dispatch) => {
   await homeService.deleteNote(noteId);

@@ -6,7 +6,6 @@ import ReactQuill from "react-quill";
 import { history, helper } from "../helpers";
 import { homeActions } from "../redux/actions/homeData.action";
 import Navbar from "../components/Navbar";
-import {} from "../redux/types";
 
 const NotePage = () => {
   const [text, setText] = useState("");
@@ -15,14 +14,13 @@ const NotePage = () => {
   const [length, setLength] = useState(0);
   const [isNewNote, setIsNewNote] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [docId, setDocId] = useState("");
   const { notes, selectedTag } = useSelector((state) => state.home);
   const dispatch = useDispatch();
-  let pathname = history.location.pathname.split("/");
-  let docId = pathname[pathname.length - 1];
+
   const handleTitle = (event) => {
     setTitle(event.target.value);
   };
-
   const handleText = (value) => {
     setText(value);
   };
@@ -30,63 +28,57 @@ const NotePage = () => {
     dispatch(homeActions.deleteNote(note.docId));
     history.push("/home");
   };
+  const findNote = (_docId) => notes.find((note) => note.docId === _docId);
 
   const debounce = useCallback(
-    helper.debounceEvent((_text, _title, _section, _docId) => {
-      dispatch(
-        homeActions.updateNote({
-          text: _text,
-          title: _title,
-          section: _section,
-          docId: _docId,
-        })
-      );
+    helper.debounceEvent((text, title, section, docId) => {
+      dispatch(homeActions.updateNote({ text, title, section, docId }));
       setSaving(false);
     }, 5000),
     []
   );
 
   useEffect(() => {
-    const findNote = (_docId) => {
-      return notes.find((note) => note.docId === _docId);
-    };
-    if (docId === "newnote") {
-      setIsNewNote(true);
-      setNote({ docId: "newnote" });
-    } else {
-      if (helper.isObjectEmpty(notes)) {
-        history.push("/home");
-        return;
-      }
+    let pathname = history.location.pathname.split("/");
+    const _docId = pathname[pathname.length - 1];
+    setLength(Object.keys(notes).length);
+    setDocId(_docId);
+    if (_docId === "newnote") setIsNewNote(true);
+    else {
+      if (helper.isObjectEmpty(notes)) history.push("/home");
+      const _note = findNote(_docId);
+      setNote(_note);
+      setText(_note.body);
+      setTitle(_note.title);
       setIsNewNote(false);
-      setNote(findNote(docId));
-      setLength(notes.length);
     }
   }, []);
+
   useEffect(() => {
-    if (note.docId === "newnote" && length + 1 === notes.length) {
-      let { docId, created } = notes[notes.length - 1];
-      setNote({ section: selectedTag, docId, created });
-      return;
+    if (helper.isObjectEmpty(note) || note.body === text) return;
+    setSaving(false);
+    setDocId(note.docId);
+  }, [note]);
+
+  useEffect(() => {
+    if (notes.length === length + 1) {
+      setIsNewNote(false);
+      setNote(notes[length]);
+      setLength(notes.length);
+      setSaving(false);
     }
   }, [notes]);
 
   useEffect(() => {
-    if (docId !== "newnote" && !helper.isObjectEmpty(note)) {
-      setText(note.body);
-      setTitle(note.title);
-    }
-  }, [note]);
-
-  useEffect(() => {
-    //Ovo ne valja
     if (isNewNote) {
-      if (text.trim() === "" && title.trim() === "") return;
-      dispatch(homeActions.putNote({ text, title, section: selectedTag }));
-      setIsNewNote(false);
+      if (saving || text.trim() === "" || title.trim() === "") return;
+      dispatch(
+        homeActions.putNote({ body: text, title: title, section: selectedTag })
+      );
+      setSaving(true);
     } else {
-      if (note.docId === "newnote") return;
-      if (note.body !== text) {
+      if (helper.isObjectEmpty(note) || !note.docId) return;
+      if (note.body !== text || note.title !== title) {
         setSaving(true);
         debounce(text, title, note.section, note.docId);
       }
@@ -107,7 +99,7 @@ const NotePage = () => {
           />
         </div>
         <p className="notePage__upperPart__saving">
-          {note.docId !== "newnote" ? (saving ? "Saving..." : "Saved") : ""}
+          {docId === "newnote" ? "" : saving ? "Saving..." : "Saved"}
         </p>
         {!isNewNote && (
           <div className="notePage__upperPart__delete">

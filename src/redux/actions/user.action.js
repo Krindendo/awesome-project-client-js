@@ -11,8 +11,8 @@ const login = (email, password) => async (dispatch) => {
   history.push("/home");
 };
 
-const logout = () => async (dispatch) => {
-  await userService.logout();
+const logout = () => (dispatch) => {
+  userService.logout();
   dispatch({ type: LOGOUT });
 };
 
@@ -24,8 +24,8 @@ const login_anonymous = () => async (dispatch) => {
   history.push("/home");
 };
 
-const getUser = () => async (dispatch) => {
-  let nick = await userService.getUserNick();
+const getUser = () => (dispatch) => {
+  let nick = userService.getUserNick();
   dispatch({ type: GET_NICK, payload: nick });
 };
 

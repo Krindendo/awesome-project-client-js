@@ -28,7 +28,11 @@ const putNote = async (newNote) => {
 };
 const updateNote = async (updateNote) => {
   try {
-    const { data } = axios.patch(`/notes/${updateNote.docId}`, updateNote);
+    const { data } = await axios.patch(
+      `/notes/${updateNote.docId}`,
+      updateNote
+    );
+    console.log("data", data);
     return data;
   } catch (error) {
     console.log("error", error.response);

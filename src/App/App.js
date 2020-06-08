@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import "./App.scss";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import AuthRoute from "../helpers/AuthRoute";
@@ -11,12 +11,6 @@ const CloudPage = lazy(() => import("../pages/CloudPage"));
 const OldPage = lazy(() => import("../pages/OldPage"));
 
 export const App = () => {
-  useEffect(() => {
-    history.listen((location, action) => {
-      // Kada menja lokaciju da obrise sve error-e
-      //Clear alerts
-    });
-  }, []);
   return (
     <div className="App">
       <Router history={history}>
