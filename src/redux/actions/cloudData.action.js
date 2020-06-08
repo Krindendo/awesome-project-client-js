@@ -11,10 +11,11 @@ const uploadFile = (newFile) => async (dispatch) => {
 };
 const deleteFile = (fileId) => async (dispatch) => {
   await cloudService.deleteFile(fileId);
+  console.log("fildId", fileId);
   dispatch({ type: DELETE_FILE, payload: fileId });
 };
 
-const downloadFile = (file) => async (dispatch) => {
+const downloadFile = (file) => async () => {
   const data = await cloudService.downloadFile(file);
   return data;
 };

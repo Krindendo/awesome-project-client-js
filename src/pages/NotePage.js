@@ -25,6 +25,7 @@ const NotePage = () => {
     setText(value);
   };
   const handleDelete = () => {
+    //Ako se pamtim i pritisne delete, puci ce program
     dispatch(homeActions.deleteNote(note.docId));
     history.push("/home");
   };
@@ -65,6 +66,7 @@ const NotePage = () => {
       setIsNewNote(false);
       setNote(notes[length]);
       setLength(notes.length);
+      setDocId(note.docId);
       setSaving(false);
     }
   }, [notes]);

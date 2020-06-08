@@ -8,7 +8,7 @@ import { cloudActions } from "../redux/actions/cloudData.action";
 import { helper } from "../helpers";
 
 const CloudPage = () => {
-  const files = useSelector((state) => state.cloud.files);
+  const { files } = useSelector((state) => state.cloud);
   var formData = new FormData();
   const dispatch = useDispatch();
   const handleUpload = (event) => {
