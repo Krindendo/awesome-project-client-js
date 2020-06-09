@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./scss/MainPage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { homeActions } from "../redux/actions/homeData.action";
-import { todoActions } from "../redux/actions/todoData.action";
-import { cloudActions } from "../redux/actions/cloudData.action";
 import { history, helper } from "../helpers";
 import Navbar from "../components/Navbar";
 import ListSection from "../components/mainComponents/ListSection";
@@ -41,17 +39,9 @@ const MainPage = () => {
     dispatch(homeActions.getTags());
     dispatch(homeActions.getNotes());
   }, []);
-
-  useEffect(() => {
-    //Proveri
-    if (helper.isObjectEmpty(notes)) return;
-    dispatch(todoActions.loadProjects());
-    dispatch(todoActions.loadTasks());
-    dispatch(cloudActions.getListOfFiles());
-  }, [notes]);
   return (
     <div>
-      {helper.isObjectEmpty(notes) && helper.isObjectEmpty(tags) ? (
+      {helper.isObjectEmpty(tags) ? (
         <div className="loading">
           <p>Loading...</p>
         </div>

@@ -2,7 +2,75 @@
 
 .ui_project {
   background-color: $clr-primary;
+  padding: 1em;
   border-radius: 8px;
   width: 400px;
   height: 400px;
+  &__text {
+    font-size: 1.2rem;
+    padding: 1em;
+  }
+  &__form {
+    &__title {
+      margin-bottom: 1em;
+      &__input {
+        margin-top: 0.5em;
+        width: 70%;
+      }
+    }
+    &__priority {
+      margin-bottom: 1em;
+      &__text {
+        margin-bottom: 0.5em;
+      }
+      &__dropbtn {
+        border: none;
+        border-radius: 18px;
+        padding: 0.5em 1em;
+        background-color: inherit;
+        box-shadow: $shadowBox_button;
+        cursor: pointer;
+        &__text {
+          display: inline-block;
+          font-size: 1rem;
+        }
+        &__icon {
+          position: relative;
+          bottom: -5px;
+          margin-left: 6px;
+          font-size: 1.3rem;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .dropdown {
+        &__list {
+          margin-left: 1em;
+          margin-top: 0.5em;
+          &__item {
+            margin-bottom: 0.3em;
+            &__button {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    &__submit {
+      font-size: 1.1rem;
+      padding: 0.3em 0.7em;
+      border: none;
+      margin-right: 0.5em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    &__cancel {
+      border: none;
+      padding: 0.5em;
+      background-color: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  }
 }

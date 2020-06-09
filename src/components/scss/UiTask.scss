@@ -1,1 +1,50 @@
 @import "../../const.scss";
+
+.uiTask {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    &__label {
+      margin: 0.5em 0;
+      font-size: 1.1rem;
+    }
+    &__input {
+      &__task {
+        width: 100%;
+        padding: 0.3em;
+      }
+      &__date {
+        width: 25%;
+      }
+    }
+    &__button {
+      margin-top: 1em;
+      &__add {
+        border: none;
+        padding: 0.5em 1em;
+        margin-right: 0.5em;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 250ms ease-in-out, color 250ms ease-in-out;
+        &:hover {
+          background-color: $clr-color1;
+          color: white;
+        }
+        &:focus {
+          outline: $clr-color1;
+        }
+      }
+      &__cancel {
+        border: none;
+        background-color: initial;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        transition: background 250ms ease-in-out, color 250ms ease-in-out;
+        &:hover {
+          background-color: $clr-color2;
+          color: white;
+        }
+      }
+    }
+  }
+}

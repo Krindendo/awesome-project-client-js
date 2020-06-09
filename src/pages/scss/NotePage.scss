@@ -1,11 +1,15 @@
 @import "../../const.scss";
 
 .notePage {
-  padding: 3em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   height: 100%;
   &__upperPart {
     margin: 2em 1em 1em 2em;
     display: flex;
+    align-items: center;
+    height: 2.5em;
     &__title {
       margin-right: 2em;
       &__p {
@@ -52,7 +56,7 @@
     }
   }
   &__lowerPart {
-    height: 96%;
+    height: 87vh;
     .quill {
       background-color: white;
       height: 87%;

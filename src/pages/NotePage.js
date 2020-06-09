@@ -25,7 +25,6 @@ const NotePage = () => {
     setText(value);
   };
   const handleDelete = () => {
-    //Ako se pamtim i pritisne delete, puci ce program
     dispatch(homeActions.deleteNote(note.docId));
     history.push("/home");
   };
@@ -56,17 +55,11 @@ const NotePage = () => {
   }, []);
 
   useEffect(() => {
-    if (helper.isObjectEmpty(note) || note.body === text) return;
-    setSaving(false);
-    setDocId(note.docId);
-  }, [note]);
-
-  useEffect(() => {
-    if (notes.length === length + 1) {
+    console.log("length", Object.keys(notes).length);
+    if (Object.keys(notes).length === length + 1) {
       setIsNewNote(false);
       setNote(notes[length]);
       setLength(notes.length);
-      setDocId(note.docId);
       setSaving(false);
     }
   }, [notes]);
@@ -101,9 +94,9 @@ const NotePage = () => {
           />
         </div>
         <p className="notePage__upperPart__saving">
-          {docId === "newnote" ? "" : saving ? "Saving..." : "Saved"}
+          {isNewNote ? "" : saving ? "Saving..." : "Saved"}
         </p>
-        {!isNewNote && (
+        {!isNewNote && !saving && (
           <div className="notePage__upperPart__delete">
             <button className="btn-delete" onClick={handleDelete}>
               Delete note

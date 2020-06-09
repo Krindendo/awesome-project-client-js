@@ -41,7 +41,7 @@ export const UiTask = ({ handle }) => {
           task
         </label>
         <input
-          className="uiTask__form__input"
+          className="uiTask__form__input__task"
           type="text"
           name="task"
           value={task}
@@ -51,7 +51,7 @@ export const UiTask = ({ handle }) => {
           date
         </label>
         <input
-          className="uiTask__form__input"
+          className="uiTask__form__input__date"
           type="date"
           name="date"
           value={date}
@@ -65,7 +65,7 @@ export const UiTask = ({ handle }) => {
             onClick={handleCancel}
             onKeyDown={handleCancel}
             type="button"
-            className="cancel"
+            className="uiTask__form__button__cancel"
           >
             Cancel
           </button>
