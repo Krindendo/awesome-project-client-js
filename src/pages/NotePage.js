@@ -11,7 +11,7 @@ const NotePage = () => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [note, setNote] = useState({});
-  const [length, setLength] = useState(0);
+  const [length, setLength] = useState(-99);
   const [isNewNote, setIsNewNote] = useState(true);
   const [saving, setSaving] = useState(false);
   const [docId, setDocId] = useState("");
@@ -55,7 +55,6 @@ const NotePage = () => {
   }, []);
 
   useEffect(() => {
-    console.log("length", Object.keys(notes).length);
     if (Object.keys(notes).length === length + 1) {
       setIsNewNote(false);
       setNote(notes[length]);

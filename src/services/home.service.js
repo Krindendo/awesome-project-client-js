@@ -32,7 +32,6 @@ const updateNote = async (updateNote) => {
       `/notes/${updateNote.docId}`,
       updateNote
     );
-    console.log("data", data);
     return data;
   } catch (error) {
     console.log("error", error.response);

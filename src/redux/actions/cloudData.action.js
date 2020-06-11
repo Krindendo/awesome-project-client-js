@@ -11,7 +11,6 @@ const uploadFile = (newFile) => async (dispatch) => {
 };
 const deleteFile = (fileId) => async (dispatch) => {
   await cloudService.deleteFile(fileId);
-  console.log("fildId", fileId);
   dispatch({ type: DELETE_FILE, payload: fileId });
 };
 

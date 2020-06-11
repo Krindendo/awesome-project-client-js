@@ -5,4 +5,28 @@
   border-radius: 8px;
   width: 400px;
   height: 400px;
+  padding: 1em;
+  &__text {
+    font-size: 1.1rem;
+    margin: 5em 0 2em 0;
+  }
+  &__button {
+    background-color: inherit;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    font-size: 1rem;
+    margin-right: 0.5em;
+    cursor: pointer;
+    box-shadow: $shadowBox_button;
+    transition: background 250ms ease-in-out, color 250ms ease-in-out;
+
+    &:hover {
+      background-color: $clr-color1;
+      color: white;
+    }
+    &:focus {
+      outline: $clr-color1;
+    }
+  }
 }

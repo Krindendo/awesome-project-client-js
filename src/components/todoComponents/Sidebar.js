@@ -48,28 +48,30 @@ export const Sidebar = () => {
         {showProjects && <FoldedProjects />}
         {showProjects && <AddProject />}
       </div>
-      <div className="sidebar__mid">
-        <hr className="hr" />
-        <div
-          tabIndex={0}
-          role="button"
-          onKeyDown={handleShowFilter}
-          onClick={handleShowFilter}
-          className="sidebar__mid__title"
-        >
-          <span className="sidebar__mid__title__icon">
-            <FaChevronDown
-              className={
-                showFilter
-                  ? "hidden-projects"
-                  : "sidebar__mid__title__icon__svg"
-              }
-            />
-          </span>
-          <p className="sidebar__mid__title__text">Filters</p>
+      {false && (
+        <div className="sidebar__mid">
+          <hr className="hr" />
+          <div
+            tabIndex={0}
+            role="button"
+            onKeyDown={handleShowFilter}
+            onClick={handleShowFilter}
+            className="sidebar__mid__title"
+          >
+            <span className="sidebar__mid__title__icon">
+              <FaChevronDown
+                className={
+                  showFilter
+                    ? "hidden-projects"
+                    : "sidebar__mid__title__icon__svg"
+                }
+              />
+            </span>
+            <p className="sidebar__mid__title__text">Filters</p>
+          </div>
+          {showFilter && <FoldedFilters />}
         </div>
-        {showFilter && <FoldedFilters />}
-      </div>
+      )}
     </div>
   );
 };

@@ -53,12 +53,12 @@ export const FoldedProjects = () => {
               <p className="">{project.name}</p>
             </div>
             <div className="foldedProjects__item__icons">
-              <span
+              {/* <span
                 className="foldedProjects__item__icons__icon"
                 onClick={() => handleEdit(project.docId)}
               >
                 <FaEdit />
-              </span>
+              </span> */}
               <span
                 className="foldedProjects__item__icons__icon"
                 onClick={() => handleDelete(project.docId)}

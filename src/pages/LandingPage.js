@@ -11,6 +11,13 @@ const LandingPage = () => {
     password: "",
   });
   const { email, password } = inputs;
+  const [register, setRegister] = useState({
+    nick: "",
+    emaill: "",
+    passwordd: "",
+    passwordd_conform: "",
+  });
+  const { nick, emaill, passwordd, passwordd_conform } = register;
   const [ui_Login, setUi_Login] = useState(true);
   const loading = useSelector((state) => state.ui.loading);
   const errors = useSelector((state) => state.ui.errors);
@@ -23,6 +30,10 @@ const LandingPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
+  const handleChange_Register = (e) => {
+    const { name, value } = e.target;
+    setRegister((inputs) => ({ ...inputs, [name]: value }));
   };
 
   const handleSubmit = (event) => {
@@ -113,9 +124,54 @@ const LandingPage = () => {
             </form>
           )}
           {!ui_Login && (
-            <div>
-              <p>Radi</p>
-            </div>
+            <form className="leftSide__insideBox__form">
+              <label className="label padding" htmlFor="nick">
+                Nick
+              </label>
+              <input
+                type="text"
+                name="nick"
+                className="input"
+                value={nick}
+                onChange={handleChange_Register}
+              />
+              <label className="label padding" htmlFor="email">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                className="input"
+                value={emaill}
+                onChange={handleChange_Register}
+              />
+              <label className="label padding" htmlFor="password">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                className="input"
+                value={passwordd}
+                onChange={handleChange_Register}
+              />
+              <label className="label padding" htmlFor="password-conform">
+                Conform Password
+              </label>
+              <input
+                type="password"
+                name="password-conform"
+                className="input"
+                value={passwordd_conform}
+                onChange={handleChange_Register}
+              />
+              <button type="button" className="back" onClick={handleLogin}>
+                Back to Login User
+              </button>
+              <p className="forbidden">
+                It is not posible to register, personal use only
+              </p>
+            </form>
           )}
           {errors.general && <p className="error__general">{errors.general}</p>}
         </div>
@@ -132,10 +188,10 @@ const LandingPage = () => {
               </h2>
               <hr className="hr" />
               <p className="rightSide__insideBox__shade__content__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corporis similique temporibus ad velit nesciunt distinctio,
-                repudiandae est eos? Rerum tenetur, architecto non minus dolore
-                voluptas dolorem aspernatur quasi hic commodi.
+                This is React web application with proper user login. You can
+                upload your files, tasks and notes. This web app is build using
+                Firebase api and NoSQL. If you want to try this web app, press
+                Anonymous login.
               </p>
             </div>
           </div>
